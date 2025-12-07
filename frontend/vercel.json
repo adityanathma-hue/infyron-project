@@ -11,6 +11,10 @@
   ],
   "routes": [
     {
+      "src": "/zoho-domain-verification.html",
+      "dest": "/zoho-domain-verification.html"
+    },
+    {
       "src": "/assets/(.*)",
       "dest": "/assets/$1"
     },
