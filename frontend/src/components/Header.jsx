@@ -11,7 +11,7 @@ export default function Header(){
   return (
     <>
       <header className="bg-white shadow relative overflow-hidden">
-        <div className="absolute inset-0 opacity-5 pointer-events-none text-8xl font-bold text-gray-800 flex items-center justify-center -rotate-12">
+        <div className="absolute inset-0 opacity-5 pointer-events-none text-4xl md:text-8xl font-bold text-gray-800 flex items-center justify-center -rotate-12">
           Infyron Technology
         </div>
         <div className="max-w-6xl mx-auto px-6 py-4 relative z-10">
@@ -20,7 +20,7 @@ export default function Header(){
             <div className="flex items-center gap-3">
               <AnimatedLogo className="h-14 w-auto" />
               <div>
-                <span className="font-semibold text-lg text-gray-800">Infyron Technology</span>
+                <span className="font-semibold text-base md:text-lg text-gray-800">Infyron Technology</span>
                 <p className="text-xs text-gray-500">Bhubaneswar, India</p>
               </div>
             </div>

@@ -159,16 +159,24 @@ function Projects(){
 function Contact(){
   const [form, setForm] = React.useState({name: '', email: '', service: '', message: ''})
   const [status, setStatus] = React.useState(null)
+  const [loading, setLoading] = React.useState(false)
 
   const submit = async e => {
     e.preventDefault()
+    setLoading(true)
+    setStatus(null)
     try{
-      // sample endpoint — adjust as needed
       const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
-      await axios.post(`${apiUrl}/contact`, form)
-      setStatus('Message sent')
+      console.log('Sending to:', `${apiUrl}/contact`, form);
+      const response = await axios.post(`${apiUrl}/contact`, form)
+      console.log('Response:', response.data);
+      setStatus('✓ Message sent successfully!')
+      setForm({name: '', email: '', service: '', message: ''})
     }catch(err){
-      setStatus('Failed to send')
+      console.error('Contact form error:', err);
+      setStatus(`✗ Failed: ${err.response?.data?.error || err.message || 'Network error'}`)
+    }finally{
+      setLoading(false)
     }
   }
 
@@ -196,8 +204,13 @@ function Contact(){
           </select>
           <textarea className="p-3 border rounded" placeholder="Tell us about your needs" value={form.message} onChange={e=>setForm({...form, message:e.target.value})} required />
           <div>
-            <button className="bg-indigo-600 text-white px-5 py-2 rounded">Send</button>
-            {status && <span className="ml-4">{status}</span>}
+            <button 
+              className="bg-indigo-600 text-white px-5 py-2 rounded disabled:opacity-50" 
+              disabled={loading}
+            >
+              {loading ? 'Sending...' : 'Send'}
+            </button>
+            {status && <span className="ml-4 text-sm">{status}</span>}
           </div>
         </form>
       </div>
