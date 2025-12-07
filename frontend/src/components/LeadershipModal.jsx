@@ -50,7 +50,7 @@ export default function LeadershipModal({ isOpen, onClose }) {
     },
     {
       id: 7,
-      name: 'Raju Kumar',
+      name: 'Gouranga Jena',
       role: 'Sales Manager',
       img: '/assets/raju.jpg',
       details: 'Drives sales strategy and client acquisition. Manages customer relationships, business development, and market expansion. Expert in understanding client needs and delivering tailored technology solutions.'

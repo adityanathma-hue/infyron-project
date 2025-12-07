@@ -9,7 +9,7 @@ export default function Footer(){
           <div>
             <div>Head Office: Marutivilla Phase-2, Lane-3, 2nd Floor, Patia, Bhubaneswar, PIN-751017, Odisha, India</div>
             <div>Call: +91 8637271743</div>
-            <div>Email: info@infyron.com</div>
+            <div>Email: info@infyrontechnology.co.in</div>
           </div>
         </div>
       </div>
