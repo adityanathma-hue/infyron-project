@@ -1,0 +1,118 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body, #root { height: 100%; }
+body { font-family: Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; }
+
+/* Custom components and animations */
+@layer components {
+	.btn-primary {
+		@apply bg-indigo-600 text-white px-6 py-3 rounded-lg font-medium shadow-md hover:bg-indigo-700 transition-colors;
+	}
+	.card-hover {
+		@apply bg-white rounded-lg shadow-sm p-6 transition-transform duration-300 ease-out transform hover:-translate-y-2 hover:shadow-xl;
+	}
+	.logo-tile {
+		@apply flex items-center justify-center p-4 bg-white rounded shadow-sm filter grayscale hover:grayscale-0 transition-all duration-300;
+	}
+	.section-fade {
+		animation: fadeUp 600ms ease forwards;
+		opacity: 0;
+	}
+	.animate-spin-slow {
+		animation: spin 4s linear infinite;
+	}
+	.animate-flag-wave {
+		animation: flagWave 1s ease-in-out infinite;
+		transform-origin: left center;
+	}
+}
+
+@keyframes fadeUp {
+	from { opacity: 0; transform: translateY(12px); }
+	to { opacity: 1; transform: translateY(0); }
+}
+
+/* hero subtle overlay */
+.hero-decor {
+	background-image: radial-gradient(circle at 10% 10%, rgba(255,255,255,0.06), transparent 10%), radial-gradient(circle at 90% 80%, rgba(0,0,0,0.06), transparent 10%);
+}
+
+/* Animated logo (gentle float + shine) */
+.animated-logo-img {
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+	display: block;
+}
+
+.animated-logo-shine {
+	position: absolute;
+	inset: 0;
+	background: linear-gradient(120deg, transparent 20%, rgba(255,255,255,0.35) 50%, transparent 80%);
+	transform: translateX(-120%);
+	animation: logoShine 3.5s ease-in-out infinite;
+	pointer-events: none;
+}
+
+@keyframes logoFloat {
+	0%, 100% { transform: translateY(0px); }
+	50% { transform: translateY(-4px); }
+}
+
+@keyframes logoShine {
+	0% { transform: translateX(-120%); }
+	60% { transform: translateX(140%); }
+	100% { transform: translateX(140%); }
+}
+
+@keyframes spin {
+	0% { transform: rotate(0deg); }
+	100% { transform: rotate(360deg); }
+}
+
+@keyframes flagWave {
+	0% { transform: rotateY(0deg) rotateZ(-5deg); }
+	50% { transform: rotateY(15deg) rotateZ(5deg); }
+	100% { transform: rotateY(0deg) rotateZ(-5deg); }
+}
+
+/* Water Bubble Animation */
+.bubble-container {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	pointer-events: none;
+	z-index: 1;
+	overflow: hidden;
+}
+
+.bubble {
+	position: absolute;
+	bottom: -100px;
+	background: radial-gradient(circle, rgba(255,255,255,0.3), rgba(100,150,255,0.2));
+	border-radius: 50%;
+	opacity: 0.6;
+	animation: rise linear infinite;
+	box-shadow: 0 0 10px rgba(100,150,255,0.3);
+}
+
+@keyframes rise {
+	0% {
+		bottom: -100px;
+		transform: translateX(0) scale(1);
+		opacity: 0.6;
+	}
+	50% {
+		opacity: 0.8;
+	}
+	100% {
+		bottom: 110vh;
+		transform: translateX(var(--drift)) scale(0.5);
+		opacity: 0;
+	}
+}
+
