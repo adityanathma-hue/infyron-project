@@ -160,6 +160,7 @@ function Contact(){
   const [form, setForm] = React.useState({name: '', email: '', service: '', message: ''})
   const [status, setStatus] = React.useState(null)
   const [loading, setLoading] = React.useState(false)
+  const [showThankYou, setShowThankYou] = React.useState(false)
 
   const submit = async e => {
     e.preventDefault()
@@ -172,6 +173,9 @@ function Contact(){
       console.log('Response:', response.data);
       setStatus('✓ Message sent successfully!')
       setForm({name: '', email: '', service: '', message: ''})
+      setShowThankYou(true)
+      // Auto-hide after 20 seconds
+      setTimeout(() => setShowThankYou(false), 20000)
     }catch(err){
       console.error('Contact form error:', err);
       setStatus(`✗ Failed: ${err.response?.data?.error || err.message || 'Network error'}`)
@@ -182,6 +186,18 @@ function Contact(){
 
   return (
     <section id="contact" className="py-16">
+      {/* Thank You Popup */}
+      {showThankYou && (
+        <div className="fixed inset-0 flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-lg shadow-2xl p-8 max-w-md text-center animate-bounce">
+            <div className="text-6xl mb-4">🎉</div>
+            <h3 className="text-2xl font-bold text-indigo-600 mb-2">Thank You!</h3>
+            <p className="text-gray-700 mb-4">Thank you for contacting us. We'll get back to you soon!</p>
+            <p className="text-sm text-gray-500">This message will close automatically in 20 seconds</p>
+          </div>
+        </div>
+      )}
+      
       <div className="max-w-3xl mx-auto px-6">
         <h2 className="text-2xl font-semibold">Contact Us</h2>
         <form onSubmit={submit} className="mt-6 grid gap-4">
