@@ -18,7 +18,12 @@ export default function Header(){
           {/* Top row: Logo + Company Info + Slogan with Flying Flag */}
           <div className="flex items-center justify-between gap-6 mb-3">
             <div className="flex items-center gap-3">
-              <AnimatedLogo className="h-14 w-auto" />
+              <img
+                src="/assets/logo-letter.svg"
+                alt="Infyron Technologies logo"
+                className="h-14 w-auto drop-shadow"
+                loading="lazy"
+              />
               <div>
                 <span className="font-semibold text-base md:text-lg text-gray-800">Infyron Technology</span>
                 <p className="text-xs text-gray-500">Bhubaneswar, India</p>
