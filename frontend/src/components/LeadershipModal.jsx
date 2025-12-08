@@ -119,11 +119,11 @@ export default function LeadershipModal({ isOpen, onClose }) {
                     onClick={() => setSelectedMember(member)}
                     className="cursor-pointer group"
                   >
-                    <div className="relative overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-all duration-300">
+                    <div className="relative overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-all duration-300 aspect-square">
                       <img 
                         src={member.img} 
                         alt={member.name}
-                        className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300"
+                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                         loading="lazy"
                         onError={(e) => { 
                           e.currentTarget.onerror = null
