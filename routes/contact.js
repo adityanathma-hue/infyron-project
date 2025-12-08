@@ -1,18 +1,10 @@
 const express = require('express');
 const router = express.Router();
-const nodemailer = require('nodemailer');
+const sgMail = require('@sendgrid/mail');
 const Contact = require('../models/Contact');
 
-// Configure Zoho transporter
-const transporter = nodemailer.createTransport({
-  host: process.env.ZOHO_SMTP_HOST || 'smtp.zoho.com',
-  port: parseInt(process.env.ZOHO_SMTP_PORT) || 465,
-  secure: true, // SSL
-  auth: {
-    user: process.env.ZOHO_EMAIL,
-    pass: process.env.ZOHO_PASSWORD
-  }
-});
+// Configure SendGrid
+sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 // POST /contact
 router.post('/', async (req, res) => {
@@ -24,11 +16,11 @@ router.post('/', async (req, res) => {
     // Save to DB
     const doc = await Contact.create({ name, email, service, message });
     
-    // Send email to admin
+    // Send email via SendGrid
     try {
-      await transporter.sendMail({
-        from: process.env.ZOHO_EMAIL,
-        to: process.env.ZOHO_EMAIL,
+      await sgMail.send({
+        to: process.env.ZOHO_EMAIL || 'info@infyrontechnology.co.in',
+        from: 'noreply@infyrontechnology.co.in',
         subject: `New Contact Form: ${name}`,
         html: `
           <h2>New Contact Form Submission</h2>
@@ -41,7 +33,7 @@ router.post('/', async (req, res) => {
           <p><small>Submission ID: ${doc._id}</small></p>
         `
       });
-      console.log('Email sent successfully to', process.env.ZOHO_EMAIL);
+      console.log('Email sent successfully via SendGrid to', process.env.ZOHO_EMAIL || 'info@infyrontechnology.co.in');
     } catch (emailErr) {
       console.error('Email sending error:', emailErr);
       // Don't fail the API if email fails, but log it
