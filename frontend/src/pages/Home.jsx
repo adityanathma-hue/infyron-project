@@ -134,54 +134,6 @@ function Services(){
   )
 }
 
-function Projects(){
-  const projects = [
-    {
-      title: 'ERP for Manufacturing',
-      desc: 'ERP implementation for small manufacturing and utility companies, inventory & production workflows.',
-      img: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=600&h=360&fit=crop',
-      localImage: '/assets/project-erp.jpg'
-    },
-    {
-      title: 'Startup Insurance Platform',
-      desc: 'Claims automation, policy management and streamlined underwriting for insurance startups.',
-      img: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=600&h=360&fit=crop',
-      localImage: '/assets/project-insurance.jpg'
-    },
-    {
-      title: 'E‑commerce Platforms',
-      desc: 'Multiple e-commerce marketplaces and B2B portals with payment and catalogue integrations.',
-      img: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=360&fit=crop',
-      localImage: '/assets/project-ecom.jpg'
-    },
-  ]
-
-  return (
-    <section id="projects" className="py-16 bg-gray-50">
-      <div className="max-w-6xl mx-auto px-6">
-        <h2 className="text-2xl font-semibold">Selected Projects</h2>
-        <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-6">
-          {projects.map((p, idx) => (
-            <div key={p.title} className="card-hover p-4 bg-white rounded-lg shadow-sm">
-              <div className="w-full h-40 overflow-hidden rounded-md mb-4">
-                <img
-                  src={p.img}
-                  alt={p.title}
-                  className="w-full h-full object-cover"
-                  loading="lazy"
-                  onError={(e)=>{ e.currentTarget.onerror = null; e.currentTarget.src = p.localImage }}
-                />
-              </div>
-              <h3 className="font-semibold text-lg">{p.title}</h3>
-              <p className="mt-2 text-sm text-gray-600">{p.desc}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  )
-}
-
 function Contact(){
   const [form, setForm] = React.useState({name: '', email: '', service: '', message: ''})
   const [status, setStatus] = React.useState(null)
@@ -270,7 +222,6 @@ export default function Home(){
     <div>
       <Hero />
       <Services />
-      <Projects />
       <WhyChoose />
       <About />
       <Technologies />

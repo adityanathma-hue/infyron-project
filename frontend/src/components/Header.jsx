@@ -53,7 +53,6 @@ export default function Header(){
             <a href="#home" className="hover:text-indigo-600">Home</a>
             <a href="#about" className="hover:text-indigo-600">About</a>
             <a href="#services" className="hover:text-indigo-600">Services</a>
-            <a href="#projects" className="hover:text-indigo-600">Projects</a>
             <button 
               onClick={() => setShowLeadership(true)}
               className="hover:text-indigo-600 font-medium"
@@ -69,7 +68,6 @@ export default function Header(){
               <a href="#home" onClick={() => setMobileMenuOpen(false)} className="hover:text-indigo-600">Home</a>
               <a href="#about" onClick={() => setMobileMenuOpen(false)} className="hover:text-indigo-600">About</a>
               <a href="#services" onClick={() => setMobileMenuOpen(false)} className="hover:text-indigo-600">Services</a>
-              <a href="#projects" onClick={() => setMobileMenuOpen(false)} className="hover:text-indigo-600">Projects</a>
               <button 
                 onClick={() => {
                   setShowLeadership(true)
