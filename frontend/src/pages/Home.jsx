@@ -38,6 +38,18 @@ function Hero(){
             <path strokeLinecap="round" strokeLinejoin="round" d="M5 5h14a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2z" />
           </svg>
         </a>
+        <a
+          href="https://www.linkedin.com/company/infyron-technologies"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="w-12 h-12 rounded-full bg-white/90 text-indigo-700 shadow-lg backdrop-blur flex items-center justify-center hover:bg-white"
+          aria-label="Infyron Technology LinkedIn"
+        >
+          {/* LinkedIn icon */}
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.475-2.236-1.986-2.236-1.081 0-1.722.731-2.004 1.438-.103.249-.129.597-.129.946v5.421h-3.554s.05-8.805 0-9.719h3.554v1.375c.427-.659 1.191-1.592 2.897-1.592 2.117 0 3.704 1.385 3.704 4.362v5.574zM5.337 8.855c-1.144 0-1.915-.758-1.915-1.71 0-.955.769-1.71 1.958-1.71 1.187 0 1.915.755 1.94 1.71 0 .952-.753 1.71-1.983 1.71zm1.581 11.597H3.714V9.633h3.204v10.819zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/>
+          </svg>
+        </a>
       </div>
 
       <div className="relative max-w-6xl mx-auto px-6 py-24 min-h-[70vh] flex items-center">
