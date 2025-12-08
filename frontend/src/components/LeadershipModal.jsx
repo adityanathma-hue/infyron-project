@@ -112,7 +112,7 @@ export default function LeadershipModal({ isOpen, onClose }) {
             /* Photo Grid */
             <div>
               <p className="text-gray-600 mb-6 text-center">Click on any team member to view their details</p>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
                 {teamMembers.map((member) => (
                   <div 
                     key={member.id} 
@@ -137,8 +137,8 @@ export default function LeadershipModal({ isOpen, onClose }) {
                       </div>
                     </div>
                     <div className="mt-2 text-center">
-                      <h5 className="font-semibold text-gray-800 text-sm">{member.name}</h5>
-                      <p className="text-xs text-indigo-600">{member.role}</p>
+                      <h5 className="font-semibold text-gray-800 text-sm break-words">{member.name}</h5>
+                      <p className="text-xs text-indigo-600 break-words">{member.role}</p>
                     </div>
                   </div>
                 ))}
