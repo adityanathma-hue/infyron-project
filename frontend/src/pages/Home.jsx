@@ -14,6 +14,32 @@ function Hero(){
         <img src="/assets/hero.jpg" alt="Infyron hero" className="w-full h-full object-cover" />
         <div className="absolute inset-0 bg-black/40" />
       </div>
+
+      {/* Left floating quick actions (call & email) */}
+      <div className="hidden md:flex absolute left-4 top-1/2 -translate-y-1/2 flex-col gap-3 z-10">
+        <a
+          href="tel:+918637271743"
+          className="w-12 h-12 rounded-full bg-white/90 text-indigo-700 shadow-lg backdrop-blur flex items-center justify-center hover:bg-white"
+          aria-label="Call Infyron Technology"
+        >
+          {/* Phone icon */}
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h2.28a1 1 0 01.948.684l1.121 3.365a1 1 0 01-.502 1.21l-1.518.759a11.042 11.042 0 006.105 6.105l.759-1.518a1 1 0 011.21-.502l3.365 1.121a1 1 0 01.684.949V19a2 2 0 01-2 2h-1c-7.18 0-13-5.82-13-13V5z" />
+          </svg>
+        </a>
+        <a
+          href="mailto:info@infyrontechnology.co.in"
+          className="w-12 h-12 rounded-full bg-white/90 text-indigo-700 shadow-lg backdrop-blur flex items-center justify-center hover:bg-white"
+          aria-label="Email Infyron Technology"
+        >
+          {/* Mail icon */}
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8" />
+            <path strokeLinecap="round" strokeLinejoin="round" d="M5 5h14a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2z" />
+          </svg>
+        </a>
+      </div>
+
       <div className="relative max-w-6xl mx-auto px-6 py-24 min-h-[70vh] flex items-center">
         <div className="w-full">
           <div className="mx-auto max-w-3xl text-center bg-black/50 backdrop-blur-sm p-8 rounded-lg">
