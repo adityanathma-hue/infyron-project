@@ -59,12 +59,12 @@ export default function LeadershipModal({ isOpen, onClose }) {
 
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 overflow-y-auto">
-      <div className="bg-white rounded-lg shadow-2xl max-w-5xl w-full my-8">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 overflow-y-auto bg-black/50">
+      <div className="bg-white rounded-lg shadow-2xl w-full max-h-screen overflow-y-auto my-4 sm:my-8">
         
         {/* Header */}
-        <div className="bg-indigo-600 text-white px-6 py-6 flex items-center justify-between">
-          <h2 className="text-2xl font-semibold">Leadership Team</h2>
+        <div className="sticky top-0 bg-indigo-600 text-white px-4 sm:px-6 py-4 sm:py-6 flex items-center justify-between">
+          <h2 className="text-xl sm:text-2xl font-semibold">Leadership Team</h2>
           <button 
             onClick={onClose}
             className="text-white text-2xl font-bold hover:bg-indigo-700 px-3 py-1 rounded"
@@ -74,20 +74,20 @@ export default function LeadershipModal({ isOpen, onClose }) {
         </div>
 
         {/* Organization Structure Grid */}
-        <div className="p-6">
+        <div className="p-4 sm:p-6">
           
           {/* If member is selected, show their details */}
           {selectedMember ? (
-            <div className="space-y-6">
+            <div className="space-y-4 sm:space-y-6">
               <button 
                 onClick={() => setSelectedMember(null)}
-                className="text-indigo-600 hover:text-indigo-800 flex items-center gap-2"
+                className="text-indigo-600 hover:text-indigo-800 flex items-center gap-2 text-sm sm:text-base"
               >
                 ← Back to Team
               </button>
               
-              <div className="flex flex-col md:flex-row gap-6 items-start">
-                <div className="w-48 h-48 flex-shrink-0 mx-auto md:mx-0">
+              <div className="flex flex-col md:flex-row gap-4 sm:gap-6 items-start">
+                <div className="w-40 h-40 sm:w-48 sm:h-48 flex-shrink-0 mx-auto md:mx-0">
                   <img 
                     src={selectedMember.img} 
                     alt={selectedMember.name}
@@ -100,9 +100,9 @@ export default function LeadershipModal({ isOpen, onClose }) {
                   />
                 </div>
                 <div className="flex-1">
-                  <h3 className="text-2xl font-bold text-gray-800">{selectedMember.name}</h3>
-                  <p className="text-lg text-indigo-600 font-semibold mt-1">{selectedMember.role}</p>
-                  <div className="mt-4 text-gray-700 leading-relaxed">
+                  <h3 className="text-xl sm:text-2xl font-bold text-gray-800">{selectedMember.name}</h3>
+                  <p className="text-base sm:text-lg text-indigo-600 font-semibold mt-1">{selectedMember.role}</p>
+                  <div className="mt-4 text-sm sm:text-base text-gray-700 leading-relaxed">
                     {selectedMember.details}
                   </div>
                 </div>
@@ -111,8 +111,8 @@ export default function LeadershipModal({ isOpen, onClose }) {
           ) : (
             /* Photo Grid */
             <div>
-              <p className="text-gray-600 mb-6 text-center">Click on any team member to view their details</p>
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
+              <p className="text-gray-600 mb-4 sm:mb-6 text-center text-sm sm:text-base">Click on any team member to view their details</p>
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 gap-2 sm:gap-4 md:gap-6">
                 {teamMembers.map((member) => (
                   <div 
                     key={member.id} 
@@ -137,8 +137,8 @@ export default function LeadershipModal({ isOpen, onClose }) {
                       </div>
                     </div>
                     <div className="mt-2 text-center">
-                      <h5 className="font-semibold text-gray-800 text-sm break-words">{member.name}</h5>
-                      <p className="text-xs text-indigo-600 break-words">{member.role}</p>
+                      <h5 className="font-semibold text-gray-800 text-xs sm:text-sm break-words">{member.name}</h5>
+                      <p className="text-xs text-indigo-600 break-words line-clamp-2">{member.role}</p>
                     </div>
                   </div>
                 ))}
