@@ -39,7 +39,7 @@ function Hero(){
           </svg>
         </a>
         <a
-          href="https://www.linkedin.com/company/infyron-technologies"
+          href="https://www.linkedin.com/company/infyron-technology"
           target="_blank"
           rel="noopener noreferrer"
           className="w-12 h-12 rounded-full bg-white/90 text-indigo-700 shadow-lg backdrop-blur flex items-center justify-center hover:bg-white"
