@@ -55,8 +55,8 @@ export default function About() {
           {team.map((leader, index) => (
             <div key={index} className="bg-white rounded shadow p-6">
               
-              {/* Leadership Image floated to the right within text */}
-              <div className="float-right ml-6 mb-4 w-64 md:w-80">
+              {/* Leadership Image - stack on mobile, float on desktop */}
+              <div className="md:float-right md:ml-6 mb-4 w-full md:w-80 max-w-sm mx-auto md:mx-0">
                 <img 
                   src={leader.img} 
                   alt={leader.name} 
@@ -67,11 +67,11 @@ export default function About() {
                 {/* Name & Title Below Photo */}
                 <div className="mt-3 text-center">
                   <h4 className="text-base font-semibold">{leader.name}</h4>
-                  <div className="text-xs text-gray-600 mt-1">{leader.role}</div>
+                  <div className="text-xs text-gray-600 mt-1 break-words">{leader.role}</div>
                 </div>
               </div>
 
-              {/* Description text flows around the image */}
+              {/* Description text flows around the image on desktop, stacks on mobile */}
               {leader.desc.map((paragraph, i) => (
                 <p key={i} className="mt-3 text-gray-700 first:mt-0">
                   {paragraph}

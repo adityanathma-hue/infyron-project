@@ -189,8 +189,8 @@ function Contact(){
       {/* Thank You Popup */}
       {showThankYou && (
         <div className="fixed inset-0 flex items-center justify-center z-50 p-4 bg-black bg-opacity-50">
-          <div className="bg-white rounded-lg shadow-2xl p-8 max-w-md w-full text-center animate-bounce">
-            <div className="text-6xl mb-4 animate-pulse">❤️</div>
+          <div className="bg-white rounded-lg shadow-2xl p-8 max-w-md w-full text-center">
+            <div className="text-6xl mb-4 animate-bounce">🎉</div>
             <h3 className="text-2xl font-bold text-indigo-600 mb-2">Thank You for Reaching Out!</h3>
             <p className="text-gray-700 mb-4">Our team will get back to you shortly.</p>
             <button 
