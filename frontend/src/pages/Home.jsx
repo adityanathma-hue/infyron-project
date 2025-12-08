@@ -15,8 +15,8 @@ function Hero(){
         <div className="absolute inset-0 bg-black/40" />
       </div>
 
-      {/* Left floating quick actions (call & email) */}
-      <div className="hidden md:flex absolute left-4 top-1/2 -translate-y-1/2 flex-col gap-3 z-10">
+      {/* Left floating quick actions (call & email) visible on all screens */}
+      <div className="fixed left-4 top-1/2 -translate-y-1/2 flex flex-col gap-3 z-20">
         <a
           href="tel:+918637271743"
           className="w-12 h-12 rounded-full bg-white/90 text-indigo-700 shadow-lg backdrop-blur flex items-center justify-center hover:bg-white"
@@ -45,22 +45,8 @@ function Hero(){
           <div className="mx-auto max-w-3xl text-center bg-black/50 backdrop-blur-sm p-8 rounded-lg">
             <h1 className="text-3xl md:text-5xl font-bold">Expand your business with Infyron Technology</h1>
             <p className="mt-4 text-lg md:text-2xl">Get A-Z service and support with Advance ERP solution</p>
-            <div className="mt-6 flex flex-col sm:flex-row items-center justify-center gap-3">
+            <div className="mt-6 flex items-center justify-center">
               <a href="#contact" className="btn-primary">Contact Infyron</a>
-              <a
-                href="tel:+918637271743"
-                className="btn-primary bg-white text-indigo-700 hover:bg-gray-100"
-                aria-label="Call Infyron Technology"
-              >
-                Call: +91 8637271743
-              </a>
-              <a
-                href="mailto:info@infyrontechnology.co.in"
-                className="btn-primary bg-white text-indigo-700 hover:bg-gray-100"
-                aria-label="Email Infyron Technology"
-              >
-                Email: info@infyrontechnology.co.in
-              </a>
             </div>
           </div>
         </div>
