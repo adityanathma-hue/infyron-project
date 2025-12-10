@@ -47,6 +47,13 @@ export default function LeadershipModal({ isOpen, onClose }) {
       role: 'Sales Manager',
       img: '/assets/raju.jpg',
       details: 'Drives sales strategy and client acquisition. Manages customer relationships, business development, and market expansion. Expert in understanding client needs and delivering tailored technology solutions.'
+    },
+    {
+      id: 8,
+      name: 'Manoranjan Hansdah',
+      role: 'Career Advisor',
+      img: '/assets/manoranjan.jpg',
+      details: 'Dedicated career counselor guiding students and professionals toward successful career paths in technology. Provides expert guidance on SAP certifications, skill development, and career transitions. Helps individuals identify opportunities and navigate their professional journey with personalized mentorship and industry insights.'
     }
   ]
 
