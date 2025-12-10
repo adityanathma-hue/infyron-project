@@ -271,7 +271,7 @@ function IndustryExpert(){
                 </p>
                 
                 <p className="text-lg">
-                  As a <strong>SAP Certified Professional</strong> and <strong>TEDx Speaker</strong>, Aditya has worked with the world's largest multinational companies including <strong>Capgemini, Wipro, Tech Mahindra</strong>, and many more Fortune 500 organizations across various industries worldwide.
+                  As a <strong>SAP Certified Professional</strong> and <strong>TEDx Speaker</strong>, Aditya has worked with the world's largest multinational companies including <strong>Capgemini, Wipro, Tech Mahindra</strong>, and many more organizations across various industries worldwide.
                 </p>
                 
                 <p className="text-lg">
