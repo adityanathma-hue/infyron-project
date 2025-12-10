@@ -28,13 +28,6 @@ export default function LeadershipModal({ isOpen, onClose }) {
       details: 'Oversees talent acquisition, employee development, and organizational culture. Ensures team excellence and professional growth across all departments. Creates a positive work environment focused on growth.'
     },
     {
-      id: 4,
-      name: 'Aditya Nath',
-      role: 'Senior SAP Trainer & Industry Expert',
-      img: '/assets/aditya.jpg',
-      details: 'Over 10 years of experience in SAP Fiori, ABAP, CPI, and UI5. Worked with multinational companies across various SAP modules. Expert trainer guiding enterprise solutions and SAP implementation strategies.'
-    },
-    {
       id: 5,
       name: 'Smrutiranjan Sethi',
       role: 'Java Development Expert',
