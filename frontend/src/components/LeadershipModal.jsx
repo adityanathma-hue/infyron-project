@@ -21,13 +21,6 @@ export default function LeadershipModal({ isOpen, onClose }) {
       details: 'Strategic business leader managing operations, client relationships, and delivery of enterprise solutions. Expertise in ERP implementation and enterprise transformation. Drives business growth and operational excellence.'
     },
     {
-      id: 3,
-      name: 'Manasipriya Sahoo',
-      role: 'HR Manager',
-      img: '/assets/manasipriya.jpg',
-      details: 'Oversees talent acquisition, employee development, and organizational culture. Ensures team excellence and professional growth across all departments. Creates a positive work environment focused on growth.'
-    },
-    {
       id: 5,
       name: 'Smrutiranjan Sethi',
       role: 'Java Development Expert',
