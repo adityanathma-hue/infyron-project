@@ -251,7 +251,7 @@ function IndustryExpert(){
             <div className="w-full md:w-2/3 p-8">
               <div className="mb-4">
                 <h3 className="text-3xl font-bold text-gray-800">Aditya Nath</h3>
-                <p className="text-xl text-indigo-600 font-semibold mt-2">Senior SAP Trainer & Industry Expert</p>
+                <p className="text-xl text-indigo-600 font-semibold mt-2">Senior SAP Industry Expert</p>
                 <div className="flex flex-wrap items-center gap-2 mt-3">
                   <span className="inline-block px-3 py-1 bg-indigo-100 text-indigo-700 rounded-full text-sm font-semibold">
                     SAP Certified Professional
