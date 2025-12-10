@@ -52,9 +52,25 @@ export default function ChatBot() {
       setTimeout(() => {
         const utterance = new SpeechSynthesisUtterance(text)
         utterance.rate = 0.95
-        utterance.pitch = 1
+        utterance.pitch = 1.2
         utterance.volume = 1
         utterance.lang = 'en-US'
+        
+        // Select a female voice
+        const voices = window.speechSynthesis.getVoices()
+        const femaleVoice = voices.find(voice => 
+          voice.name.includes('Female') || 
+          voice.name.includes('Samantha') || 
+          voice.name.includes('Victoria') ||
+          voice.name.includes('Karen') ||
+          voice.name.includes('Google US English Female') ||
+          voice.name.includes('Microsoft Zira') ||
+          (voice.lang === 'en-US' && voice.name.includes('Female'))
+        )
+        
+        if (femaleVoice) {
+          utterance.voice = femaleVoice
+        }
         
         window.speechSynthesis.speak(utterance)
       }, 100)
