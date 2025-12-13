@@ -373,34 +373,33 @@ export default function PaymentModal({ isOpen, onClose, courses }) {
               <li>• Credit/Debit Cards</li>
               <li>• UPI (Google Pay, PhonePe, Paytm)</li>
               <li>• Net Banking</li>
-              <div className="flex gap-4 mt-6">
-                <button
-                  type="button"
-                  onClick={() => setStep(1)}
-                  className="flex-1 px-6 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition font-medium"
-                >
-                  ← Back
-                </button>
-                <button
-                  type="submit"
-                  disabled={isProcessing}
-                  className="flex-1 px-6 py-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition font-medium disabled:bg-indigo-400"
-                >
-                  {isProcessing ? 'Processing...' : 'Pay Now'}
-                </button>
-              </div>
-            </form>
-
-            <p className="text-xs text-gray-500 text-center mt-4">
-              🔒 Secure payment powered by Razorpay
-            </p>
+            </ul>
           </div>
-        )}
+
+          <div className="flex gap-4 mt-6">
+            <button
+              type="button"
+              onClick={() => setStep(1)}
+              className="flex-1 px-6 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition font-medium"
+            >
+              ← Back
+            </button>
+            <button
+              type="submit"
+              disabled={isProcessing}
+              className="flex-1 px-6 py-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition font-medium disabled:bg-indigo-400"
+            >
+              {isProcessing ? 'Processing...' : 'Pay Now'}
+            </button>
+          </div>
+        </form>
+
+        <p className="text-xs text-gray-500 text-center mt-4">
+          🔒 Secure payment powered by Razorpay
+        </p>
       </div>
-    </div>
-  )
-}       </p>
-      </div>
-    </div>
-  )
+    )}
+  </div>
+</div>
+)
 }
