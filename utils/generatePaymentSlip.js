@@ -10,44 +10,19 @@ function generatePaymentSlip(payment, outputPath, acknowledgments = []) {
 
       doc.pipe(stream);
 
-      // Add watermark company logo in background (use logo.svg or fallback to company logo PNG, NOT CEO photo)
-      const companyLogoPath = path.join(__dirname, '../frontend/public/assets/logo.svg');
+      // Simple Header - No logo
+      doc.fontSize(22).fillColor('#1F2937').font('Helvetica-Bold')
+         .text('INFYRON TECHNOLOGY PVT. LTD.', { align: 'center' });
       
-      // If SVG not available, use the company logo PNG (Gemini image is company logo, not CEO photo)
-      const companyLogoPngPath = path.join(__dirname, '../frontend/public/assets/Gemini_Generated_Image_qovcidqovcidqovc.png');
+      doc.moveDown(0.3);
+      doc.fontSize(9).fillColor('#4B5563').font('Helvetica');
+      doc.text('Bhubaneswar, Odisha, India', { align: 'center' });
+      doc.text('Email: info@infyrontechnology.co.in | Phone: +91 8637271743', { align: 'center' });
+      doc.text('Website: www.infyrontechnology.co.in', { align: 'center' });
       
-      if (fs.existsSync(companyLogoPngPath)) {
-        // Add faded background company logo watermark
-        doc.save();
-        doc.opacity(0.06);
-        doc.image(companyLogoPngPath, 170, 320, { width: 250 });
-        doc.restore();
-      }
-
-      // Colorful Header Background
-      doc.save();
-      doc.linearGradient(40, 40, 555, 120)
-         .stop(0, '#6366F1')
-         .stop(1, '#8B5CF6');
-      doc.rect(40, 40, 515, 80).fill();
-      doc.restore();
-
-      // Company Logo in Header (left side - use company logo only)
-      if (fs.existsSync(companyLogoPngPath)) {
-        doc.image(companyLogoPngPath, 55, 50, { width: 60, height: 60 });
-      }
-
-      // Company Details in Header (right side with white text)
-      doc.fontSize(20).fillColor('#FFFFFF').font('Helvetica-Bold')
-         .text('INFYRON TECHNOLOGY PVT. LTD.', 130, 48, { width: 400 });
-      
-      doc.fontSize(7).fillColor('#FFFFFF').font('Helvetica');
-      doc.text('Address: Bhubaneswar, Odisha, India', 130, 72, { width: 400 });
-      doc.text('Email: info@infyrontechnology.co.in', 130, 83, { width: 400 });
-      doc.text('Phone: +91 8637271743', 130, 94, { width: 400 });
-      doc.text('Website: www.infyrontechnology.co.in', 130, 105, { width: 400 });
-      
-      doc.moveDown(3);
+      doc.moveDown(1);
+      doc.strokeColor('#000000').lineWidth(1).moveTo(50, doc.y).lineTo(545, doc.y).stroke();
+      doc.moveDown(1);
 
       // Payment Receipt Title
       doc.fontSize(16).fillColor('#6366F1').font('Helvetica-Bold')
@@ -99,18 +74,13 @@ function generatePaymentSlip(payment, outputPath, acknowledgments = []) {
 
       doc.moveDown(4);
 
-      // Payment Breakdown Table - Compact & Colorful
+      // Payment Breakdown Table - Simple
       const tableTop = doc.y;
       
       // Table Header
-      doc.save();
-      doc.linearGradient(50, tableTop, 545, tableTop + 20)
-         .stop(0, '#6366F1')
-         .stop(1, '#8B5CF6');
-      doc.rect(50, tableTop, 495, 20).fill();
-      doc.restore();
+      doc.fillColor('#F3F4F6').rect(50, tableTop, 495, 20).fill();
       
-      doc.fillColor('#FFFFFF').fontSize(9).font('Helvetica-Bold')
+      doc.fillColor('#000000').fontSize(9).font('Helvetica-Bold')
         .text('Description', 60, tableTop + 6)
         .text('Amount (₹)', 460, tableTop + 6);
       
@@ -138,15 +108,14 @@ function generatePaymentSlip(payment, outputPath, acknowledgments = []) {
       doc.fillColor('#10B981').rect(50, currentY, 495, 25).fill();
       doc.restore();
 
-      // Total Amount
-      doc.fontSize(11).font('Helvetica-Bold').fillColor('#FFFFFF');
-      doc.text('TOTAL AMOUNT PAID', 60, currentY + 6);
-      doc.text('₹ ' + payment.amount.toLocaleString('en-IN'), 460, currentY + 6);
-      
-      currentY += 30;
+      // Total line
+      doc.strokeColor('#000000').lineWidth(1).moveTo(50, currentY).lineTo(545, currentY).stroke();
+      currentY += 8;
 
-      // Acknowledgments Section
-      if (acknowledgments && acknowledgments.length > 0) {
+      // Total Amount
+      doc.fontSize(11).font('Helvetica-Bold').fillColor('#000000');
+      doc.text('TOTAL AMOUNT PAID', 60, currentY);
+      doc.text('₹ ' + payment.amount.toLocaleString('en-IN'), 460, currentY);
         const ackStartY = doc.y;
         doc.fontSize(11).fillColor('#6366F1').font('Helvetica-Bold');
         doc.text('IMPORTANT ACKNOWLEDGMENTS', 50);
@@ -215,23 +184,21 @@ function generatePaymentSlip(payment, outputPath, acknowledgments = []) {
       doc.text('Date: ' + new Date(payment.paidAt).toLocaleDateString('en-IN'), 360, signatureY + 52);
 
       // Footer Section
+      // Footer Section
       doc.moveDown(0.8);
-      doc.fontSize(7).fillColor('#6B7280').font('Helvetica-Oblique');
+      doc.fontSize(8).fillColor('#6B7280').font('Helvetica-Oblique');
       doc.text('This is a computer-generated receipt. Digital signature is valid without physical stamp.', 50, 755, { 
         align: 'center',
         width: 495
       });
       
       // Simple thank you note
-      doc.fontSize(11).fillColor('#10B981').font('Helvetica-Bold');
+      doc.fontSize(10).fillColor('#000000').font('Helvetica-Bold');
       doc.text('Thank You for Choosing Infyron Technology!', 50, 770, { align: 'center', width: 495 });
 
       // Simple border
-      doc.save();
-      doc.strokeColor('#6366F1').lineWidth(3)
+      doc.strokeColor('#000000').lineWidth(2)
         .rect(40, 40, 515, 752).stroke();
-      doc.restore();
-
       doc.end();
 
       stream.on('finish', () => {
