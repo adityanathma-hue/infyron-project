@@ -47,6 +47,13 @@ export default function LeadershipModal({ isOpen, onClose }) {
       role: 'Career Advisor',
       img: '/assets/manoranjan.jpg',
       details: 'Dedicated career counselor guiding students and professionals toward successful career paths in technology. Provides expert guidance on SAP certifications, skill development, and career transitions. Helps individuals identify opportunities and navigate their professional journey with personalized mentorship and industry insights.'
+    },
+    {
+      id: 9,
+      name: 'Santosh Kumar Padhi',
+      role: 'Senior Embedded Systems Expert',
+      img: '/assets/sant.jpg',
+      details: 'Over 8 years of specialized expertise in embedded systems, IoT solutions, and hardware-software integration. Successfully designed and deployed mission-critical embedded systems for automotive, industrial automation, and consumer electronics sectors. Expert in ARM Cortex microcontrollers, RTOS, firmware development, and IoT platforms. Teaches practical embedded systems development with real-world projects including automotive ECUs, industrial control systems, and smart devices.'
     }
   ]
 
