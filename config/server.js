@@ -25,6 +25,10 @@ app.use('/contact', contactRoute);
 const enrollRoute = require('../routes/enroll');
 app.use('/api/enroll', enrollRoute);
 
+// Payment route
+const paymentRoute = require('../routes/payment');
+app.use('/api/payment', paymentRoute);
+
 // Start server
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

@@ -1,8 +1,16 @@
 import React, { useState } from 'react'
 import EnrollmentModal from '../components/EnrollmentModal'
+import PaymentModal from '../components/PaymentModal'
 
 export default function Courses() {
   const [enrollmentModal, setEnrollmentModal] = useState({
+    isOpen: false,
+    courseTitle: '',
+    courseType: '',
+    price: ''
+  })
+
+  const [paymentModal, setPaymentModal] = useState({
     isOpen: false,
     courseTitle: '',
     courseType: '',
@@ -20,6 +28,24 @@ export default function Courses() {
 
   const closeEnrollmentModal = () => {
     setEnrollmentModal({
+      isOpen: false,
+      courseTitle: '',
+      courseType: '',
+      price: ''
+    })
+  }
+
+  const openPaymentModal = (courseTitle, courseType, price) => {
+    setPaymentModal({
+      isOpen: true,
+      courseTitle,
+      courseType,
+      price
+    })
+  }
+
+  const closePaymentModal = () => {
+    setPaymentModal({
       isOpen: false,
       courseTitle: '',
       courseType: '',
@@ -183,10 +209,26 @@ export default function Courses() {
           {courses.map((course) => (
             <div
               key={course.id}
-              className="bg-white rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300 overflow-hidden border border-gray-100"
+              className="bg-white rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300 overflow-hidden border border-gray-100 relative"
             >
+              {/* Pay Now Badge - Top Right Corner */}
+              <div className="absolute top-4 right-4 z-10">
+                <div className="relative">
+                  <div className="absolute inset-0 bg-green-500 rounded-full blur-md opacity-75 animate-pulse"></div>
+                  <button
+                    onClick={() => openPaymentModal(course.title, 'training', course.price)}
+                    className="relative bg-gradient-to-r from-green-500 to-emerald-600 text-white px-4 py-2 rounded-full font-bold text-xs shadow-xl hover:shadow-2xl transform hover:scale-110 transition-all duration-300 animate-bounce"
+                  >
+                    💳 PAY NOW
+                  </button>
+                </div>
+                <p className="text-center text-[10px] font-bold text-red-600 mt-1 animate-pulse">
+                  Don't Miss!
+                </p>
+              </div>
+
               <div className="bg-gradient-to-r from-indigo-600 to-purple-600 p-6 text-white">
-                <h3 className="text-xl font-bold mb-2">{course.title}</h3>
+                <h3 className="text-xl font-bold mb-2 pr-20">{course.title}</h3>
                 <p className="text-indigo-100 text-sm">{course.duration}</p>
               </div>
 
@@ -208,35 +250,31 @@ export default function Courses() {
                 </div>
 
                 <div className="border-t pt-4 mt-4">
-                  <div className="flex justify-between items-center mb-3">
-                    <div>
-                      <p className="text-xs text-gray-500">Training Only</p>
+                  <div className="mb-3">
+                    <div className="bg-gray-50 rounded-lg p-3 mb-3">
+                      <p className="text-xs text-gray-500 mb-1">Training Only</p>
                       <p className="text-2xl font-bold text-indigo-600">{course.price}</p>
+                      <button 
+                        onClick={() => openEnrollmentModal(course.title, 'training', course.price)}
+                        className="w-full mt-3 bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition text-sm font-medium"
+                      >
+                        📝 Enroll Now
+                      </button>
                     </div>
-                    <button 
-                      onClick={() => openEnrollmentModal(course.title, 'training', course.price)}
-                      className="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition text-sm font-medium"
-                    >
-                      Enroll Now
-                    </button>
                   </div>
 
                   <div className="bg-gradient-to-r from-purple-50 to-indigo-50 rounded-lg p-3 border border-indigo-200">
-                    <div className="flex justify-between items-center">
-                      <div>
-                        <p className="text-xs text-purple-700 font-semibold flex items-center">
-                          <span className="text-lg mr-1">🎓</span>
-                          With Internship
-                        </p>
-                        <p className="text-xl font-bold text-purple-700">{course.internshipPrice}</p>
-                      </div>
-                      <button 
-                        onClick={() => openEnrollmentModal(course.title, 'internship', course.internshipPrice)}
-                        className="bg-gradient-to-r from-purple-600 to-indigo-600 text-white px-4 py-2 rounded-lg hover:from-purple-700 hover:to-indigo-700 transition text-sm font-medium shadow-md"
-                      >
-                        Join Program
-                      </button>
-                    </div>
+                    <p className="text-xs text-purple-700 font-semibold flex items-center mb-1">
+                      <span className="text-lg mr-1">🎓</span>
+                      With Internship
+                    </p>
+                    <p className="text-xl font-bold text-purple-700 mb-3">{course.internshipPrice}</p>
+                    <button 
+                      onClick={() => openEnrollmentModal(course.title, 'internship', course.internshipPrice)}
+                      className="w-full bg-gradient-to-r from-purple-600 to-indigo-600 text-white px-4 py-2 rounded-lg hover:from-purple-700 hover:to-indigo-700 transition text-sm font-medium shadow-md"
+                    >
+                      📝 Enroll Now
+                    </button>
                     <p className="text-xs text-purple-600 mt-2">
                       Includes 3-month internship with real projects & certificate
                     </p>
@@ -245,6 +283,54 @@ export default function Courses() {
               </div>
             </div>
           ))}
+        </div>
+
+        {/* Pay Now Section - Prominent */}
+        <div className="mt-16 bg-gradient-to-r from-green-50 to-emerald-50 rounded-2xl shadow-2xl p-8 border-2 border-green-300">
+          <div className="text-center mb-6">
+            <h2 className="text-3xl font-bold text-gray-900 mb-3">
+              💳 Ready to Start Your Journey?
+            </h2>
+            <p className="text-lg text-gray-700 mb-6">
+              Make your payment now and get instant confirmation. Select your course below:
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-6xl mx-auto">
+            {courses.map((course) => (
+              <div key={`pay-${course.id}`} className="bg-white rounded-lg p-4 shadow-md hover:shadow-xl transition-all">
+                <h3 className="font-bold text-gray-900 mb-2 text-sm">{course.title}</h3>
+                <div className="space-y-2">
+                  <div className="border-b pb-2">
+                    <p className="text-xs text-gray-500">Training Only</p>
+                    <p className="text-lg font-bold text-indigo-600 mb-2">{course.price}</p>
+                    <button 
+                      onClick={() => openPaymentModal(course.title, 'training', course.price)}
+                      className="w-full bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition font-medium shadow-md hover:shadow-lg transform hover:scale-105"
+                    >
+                      💳 Pay Now
+                    </button>
+                  </div>
+                  <div>
+                    <p className="text-xs text-purple-700 font-semibold">With Internship</p>
+                    <p className="text-lg font-bold text-purple-700 mb-2">{course.internshipPrice}</p>
+                    <button 
+                      onClick={() => openPaymentModal(course.title, 'internship', course.internshipPrice)}
+                      className="w-full bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition font-medium shadow-md hover:shadow-lg transform hover:scale-105"
+                    >
+                      💳 Pay Now
+                    </button>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+          
+          <div className="mt-6 text-center">
+            <p className="text-sm text-gray-600">
+              🔒 Secure payment gateway • All payment methods accepted • Instant receipt via email
+            </p>
+          </div>
         </div>
 
         {/* Additional Info Section */}
@@ -291,6 +377,14 @@ export default function Courses() {
         courseTitle={enrollmentModal.courseTitle}
         courseType={enrollmentModal.courseType}
         price={enrollmentModal.price}
+      />
+      
+      <PaymentModal
+        isOpen={paymentModal.isOpen}
+        onClose={closePaymentModal}
+        courseTitle={paymentModal.courseTitle}
+        courseType={paymentModal.courseType}
+        price={paymentModal.price}
       />
     </div>
   )
