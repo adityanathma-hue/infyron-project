@@ -21,6 +21,10 @@ app.get('/', (req, res) => {
 const contactRoute = require('../routes/contact');
 app.use('/contact', contactRoute);
 
+// Enrollment route
+const enrollRoute = require('../routes/enroll');
+app.use('/api/enroll', enrollRoute);
+
 // Start server
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

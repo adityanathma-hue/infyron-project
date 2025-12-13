@@ -1,6 +1,32 @@
-import React from 'react'
+import React, { useState } from 'react'
+import EnrollmentModal from '../components/EnrollmentModal'
 
 export default function Courses() {
+  const [enrollmentModal, setEnrollmentModal] = useState({
+    isOpen: false,
+    courseTitle: '',
+    courseType: '',
+    price: ''
+  })
+
+  const openEnrollmentModal = (courseTitle, courseType, price) => {
+    setEnrollmentModal({
+      isOpen: true,
+      courseTitle,
+      courseType,
+      price
+    })
+  }
+
+  const closeEnrollmentModal = () => {
+    setEnrollmentModal({
+      isOpen: false,
+      courseTitle: '',
+      courseType: '',
+      price: ''
+    })
+  }
+
   const courses = [
     {
       id: 1,
@@ -142,7 +168,10 @@ export default function Courses() {
                       <p className="text-xs text-gray-500">Training Only</p>
                       <p className="text-2xl font-bold text-indigo-600">{course.price}</p>
                     </div>
-                    <button className="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition text-sm font-medium">
+                    <button 
+                      onClick={() => openEnrollmentModal(course.title, 'training', course.price)}
+                      className="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition text-sm font-medium"
+                    >
                       Enroll Now
                     </button>
                   </div>
@@ -156,7 +185,10 @@ export default function Courses() {
                         </p>
                         <p className="text-xl font-bold text-purple-700">{course.internshipPrice}</p>
                       </div>
-                      <button className="bg-gradient-to-r from-purple-600 to-indigo-600 text-white px-4 py-2 rounded-lg hover:from-purple-700 hover:to-indigo-700 transition text-sm font-medium shadow-md">
+                      <button 
+                        onClick={() => openEnrollmentModal(course.title, 'internship', course.internshipPrice)}
+                        className="bg-gradient-to-r from-purple-600 to-indigo-600 text-white px-4 py-2 rounded-lg hover:from-purple-700 hover:to-indigo-700 transition text-sm font-medium shadow-md"
+                      >
                         Join Program
                       </button>
                     </div>
@@ -207,6 +239,14 @@ export default function Courses() {
           </a>
         </div>
       </div>
+
+      <EnrollmentModal
+        isOpen={enrollmentModal.isOpen}
+        onClose={closeEnrollmentModal}
+        courseTitle={enrollmentModal.courseTitle}
+        courseType={enrollmentModal.courseType}
+        price={enrollmentModal.price}
+      />
     </div>
   )
 }
