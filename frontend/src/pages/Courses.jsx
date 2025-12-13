@@ -108,6 +108,51 @@ export default function Courses() {
       price: '₹45,000',
       internshipPrice: '₹55,000',
       features: ['Personnel Administration', 'Payroll', 'Time Management', 'Talent Management', 'Organizational Management']
+    },
+    {
+      id: 10,
+      title: 'Computer Basics & MS Office (High School)',
+      description: 'Foundation course for high school students covering computer fundamentals and MS Office applications.',
+      duration: '2 months',
+      price: '₹8,000',
+      internshipPrice: '₹12,000',
+      features: ['Computer Fundamentals', 'MS Word', 'MS Excel', 'MS PowerPoint', 'Internet Basics', 'Typing Skills']
+    },
+    {
+      id: 11,
+      title: 'Web Development Basics (High School/Diploma)',
+      description: 'Introduction to web development with HTML, CSS, and JavaScript for beginners.',
+      duration: '3 months',
+      price: '₹15,000',
+      internshipPrice: '₹20,000',
+      features: ['HTML5', 'CSS3', 'JavaScript Basics', 'Responsive Design', 'Portfolio Project', 'Certificate']
+    },
+    {
+      id: 12,
+      title: 'Programming Fundamentals with Python (Diploma)',
+      description: 'Learn programming basics with Python - perfect for diploma students entering tech field.',
+      duration: '2.5 months',
+      price: '₹18,000',
+      internshipPrice: '₹25,000',
+      features: ['Python Basics', 'Data Structures', 'Problem Solving', 'Mini Projects', 'Coding Practice', 'Certification']
+    },
+    {
+      id: 13,
+      title: 'Digital Marketing Basics (High School/Diploma)',
+      description: 'Learn social media marketing, SEO basics, and content creation for career in digital marketing.',
+      duration: '2 months',
+      price: '₹12,000',
+      internshipPrice: '₹18,000',
+      features: ['Social Media Marketing', 'SEO Basics', 'Content Creation', 'Email Marketing', 'Analytics', 'Live Projects']
+    },
+    {
+      id: 14,
+      title: 'Graphic Design with Canva & Photoshop (Diploma)',
+      description: 'Creative design course for diploma students covering modern design tools and principles.',
+      duration: '2 months',
+      price: '₹14,000',
+      internshipPrice: '₹20,000',
+      features: ['Canva Pro', 'Photoshop Basics', 'Logo Design', 'Social Media Graphics', 'Portfolio Building', 'Certificate']
     }
   ]
 

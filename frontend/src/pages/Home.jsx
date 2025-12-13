@@ -6,6 +6,7 @@ import Security from '../components/Security'
 import EMarketing from '../components/EMarketing'
 import About from '../components/About'
 import WhyChoose from '../components/WhyChoose'
+import PromoBanner from '../components/PromoBanner'
 
 function Hero(){
   return (
@@ -326,6 +327,7 @@ function IndustryExpert(){
 export default function Home(){
   return (
     <div>
+      <PromoBanner />
       <Hero />
       <Services />
       <IndustryExpert />
