@@ -37,6 +37,25 @@ export default function EnrollmentModal({ isOpen, onClose, courseTitle, courseTy
       })
 
       if (response.ok) {
+        const data = await response.json()
+        
+        // Open WhatsApp with enrollment details
+        const whatsappMessage = `🎓 NEW ENROLLMENT ALERT!
+
+Course: ${courseTitle}
+Type: ${courseType === 'internship' ? 'With Internship' : 'Training Only'}
+Price: ${price}
+
+Student Details:
+Name: ${formData.name}
+Phone: ${formData.phone}
+Email: ${formData.email}
+Qualification: ${formData.qualification}
+${formData.message ? `Message: ${formData.message}` : ''}`
+
+        const whatsappUrl = `https://wa.me/918637271743?text=${encodeURIComponent(whatsappMessage)}`
+        window.open(whatsappUrl, '_blank')
+        
         setShowThankYou(true)
         setFormData({
           name: '',

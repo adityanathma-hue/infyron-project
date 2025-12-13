@@ -91,7 +91,14 @@ Contact student at: ${phone}
     // Always return success since we saved to database
     res.status(200).json({ 
       message: 'Enrollment submitted successfully!',
-      enrollmentId: newEnrollment._id 
+      enrollmentId: newEnrollment._id,
+      whatsappData: {
+        name,
+        phone,
+        courseTitle,
+        courseType,
+        price
+      }
     });
 
   } catch (error) {
