@@ -8,6 +8,7 @@ export default function EnrollmentModal({ isOpen, onClose, courseTitle, courseTy
     qualification: '',
     message: ''
   })
+  const [submittedName, setSubmittedName] = useState('')
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [showThankYou, setShowThankYou] = useState(false)
 
@@ -37,25 +38,7 @@ export default function EnrollmentModal({ isOpen, onClose, courseTitle, courseTy
       })
 
       if (response.ok) {
-        const data = await response.json()
-        
-        // Open WhatsApp with enrollment details
-        const whatsappMessage = `🎓 NEW ENROLLMENT ALERT!
-
-Course: ${courseTitle}
-Type: ${courseType === 'internship' ? 'With Internship' : 'Training Only'}
-Price: ${price}
-
-Student Details:
-Name: ${formData.name}
-Phone: ${formData.phone}
-Email: ${formData.email}
-Qualification: ${formData.qualification}
-${formData.message ? `Message: ${formData.message}` : ''}`
-
-        const whatsappUrl = `https://wa.me/918637271743?text=${encodeURIComponent(whatsappMessage)}`
-        window.open(whatsappUrl, '_blank')
-        
+        setSubmittedName(formData.name)
         setShowThankYou(true)
         setFormData({
           name: '',
@@ -64,10 +47,6 @@ ${formData.message ? `Message: ${formData.message}` : ''}`
           qualification: '',
           message: ''
         })
-        setTimeout(() => {
-          setShowThankYou(false)
-          onClose()
-        }, 5000)
       } else {
         const errorData = await response.json().catch(() => ({}))
         console.error('Server error:', errorData)
@@ -84,6 +63,14 @@ ${formData.message ? `Message: ${formData.message}` : ''}`
   if (!isOpen) return null
 
   if (showThankYou) {
+    const handleWhatsAppConnect = () => {
+      const whatsappMessage = `Hi, I just enrolled for ${courseTitle} (${courseType === 'internship' ? 'With Internship' : 'Training Only'}). I'd like to know more details. My name is ${submittedName}.`
+      const whatsappUrl = `https://wa.me/918637271743?text=${encodeURIComponent(whatsappMessage)}`
+      window.open(whatsappUrl, '_blank')
+      setShowThankYou(false)
+      onClose()
+    }
+
     return (
       <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
         <div className="bg-white rounded-xl shadow-2xl p-8 max-w-md w-full text-center">
@@ -92,15 +79,27 @@ ${formData.message ? `Message: ${formData.message}` : ''}`
           <p className="text-gray-600 mb-6">
             Thank you for your interest in our course. Our team will reach out to you shortly.
           </p>
-          <button
-            onClick={() => {
-              setShowThankYou(false)
-              onClose()
-            }}
-            className="bg-indigo-600 text-white px-6 py-2 rounded-lg hover:bg-indigo-700 transition"
-          >
-            Close
-          </button>
+          <p className="text-gray-700 mb-6 font-medium">
+            Would you like to connect with us directly on WhatsApp?
+          </p>
+          <div className="flex gap-3">
+            <button
+              onClick={handleWhatsAppConnect}
+              className="flex-1 bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition font-medium flex items-center justify-center gap-2"
+            >
+              <span>📱</span>
+              Connect on WhatsApp
+            </button>
+            <button
+              onClick={() => {
+                setShowThankYou(false)
+                onClose()
+              }}
+              className="flex-1 bg-gray-200 text-gray-700 px-6 py-3 rounded-lg hover:bg-gray-300 transition font-medium"
+            >
+              Close
+            </button>
+          </div>
         </div>
       </div>
     )
