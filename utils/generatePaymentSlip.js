@@ -116,7 +116,10 @@ function generatePaymentSlip(payment, outputPath, acknowledgments = []) {
       doc.fontSize(11).font('Helvetica-Bold').fillColor('#000000');
       doc.text('TOTAL AMOUNT PAID', 60, currentY);
       doc.text('₹ ' + payment.amount.toLocaleString('en-IN'), 460, currentY);
-        const ackStartY = doc.y;
+
+      // Acknowledgments Section (if provided)
+      if (acknowledgments && acknowledgments.length > 0) {
+        doc.moveDown(1.5);
         doc.fontSize(11).fillColor('#6366F1').font('Helvetica-Bold');
         doc.text('IMPORTANT ACKNOWLEDGMENTS', 50);
         doc.moveDown(0.3);
