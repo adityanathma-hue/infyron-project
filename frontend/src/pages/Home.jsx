@@ -8,6 +8,7 @@ import About from '../components/About'
 import WhyChoose from '../components/WhyChoose'
 import PromoBanner from '../components/PromoBanner'
 import PromoPopup from '../components/PromoPopup'
+import ShareableBanner from '../components/ShareableBanner'
 
 function Hero(){
   return (
@@ -330,6 +331,7 @@ export default function Home(){
     <div>
       <PromoPopup />
       <PromoBanner />
+      <ShareableBanner />
       <Hero />
       <Services />
       <IndustryExpert />

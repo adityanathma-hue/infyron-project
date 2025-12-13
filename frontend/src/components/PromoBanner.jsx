@@ -4,6 +4,28 @@ import { Link } from 'react-router-dom'
 export default function PromoBanner() {
   const [isVisible, setIsVisible] = useState(true)
 
+  const handleShare = async () => {
+    const shareData = {
+      title: 'Infyron Technology - Limited Time Offer!',
+      text: '🎓 Get Internship + Special Discount! Enroll now at Infyron Technology and grab your dream job! Hurry, seats filling fast! 🔥',
+      url: window.location.origin + '/courses'
+    }
+
+    try {
+      if (navigator.share) {
+        // Use native share on mobile
+        await navigator.share(shareData)
+      } else {
+        // Fallback: Copy to clipboard
+        const shareText = `${shareData.text}\n\n${shareData.url}`
+        await navigator.clipboard.writeText(shareText)
+        alert('✅ Banner text copied! Paste it in your status/WhatsApp.')
+      }
+    } catch (err) {
+      console.error('Share failed:', err)
+    }
+  }
+
   if (!isVisible) return null
 
   return (
@@ -33,7 +55,18 @@ export default function PromoBanner() {
           </p>
         </div>
 
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-3">
+          <button
+            onClick={handleShare}
+            className="bg-yellow-300 text-purple-700 px-5 py-2 rounded-full font-bold hover:bg-yellow-400 transition transform hover:scale-105 shadow-lg whitespace-nowrap flex items-center gap-2"
+            title="Share this offer"
+          >
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
+            </svg>
+            Share
+          </button>
+          
           <Link
             to="/courses"
             target="_blank"
