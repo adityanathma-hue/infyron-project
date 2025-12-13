@@ -128,6 +128,25 @@ export default function PaymentModal({ isOpen, onClose, courses }) {
         name: 'Infyron Technologies',
         description: `${courseTitle} - ${courseType === 'internship' ? 'With Internship' : 'Training Only'}`,
         order_id: order.orderId,
+        prefill: {
+          name: formData.name,
+          email: formData.email,
+          contact: formData.phone
+        },
+        notes: {
+          course: courseTitle,
+          type: courseType,
+          student_name: formData.name
+        },
+        theme: {
+          color: '#6366F1',
+          hide_topbar: false
+        },
+        modal: {
+          ondismiss: function() {
+            setIsProcessing(false)
+          }
+        },
         handler: async function (response) {
           // Payment successful
           try {
