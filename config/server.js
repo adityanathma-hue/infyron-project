@@ -6,7 +6,10 @@ const cors = require('cors');
 const app = express();
 
 // Connect to DB
-connectDB();
+connectDB().catch(err => {
+  console.error('Database connection failed:', err.message);
+  console.error('Server will continue running but database operations will fail');
+});
 
 // Middleware
 app.use(express.json());
