@@ -79,6 +79,10 @@ export default function PaymentModal({ isOpen, onClose, courses }) {
       return
     }
 
+    // Get course title from selected course
+    const courseTitle = selectedCourse?.title || 'Course Enrollment'
+    const courseType = selectedType
+
     setIsProcessing(true)
 
     try {
