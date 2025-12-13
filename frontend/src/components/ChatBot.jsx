@@ -154,7 +154,7 @@ export default function ChatBot() {
       {/* WhatsApp Button */}
       <button
         onClick={handleWhatsAppClick}
-        className="fixed bottom-6 right-24 w-14 h-14 bg-green-500 rounded-full shadow-lg hover:shadow-xl transition-all transform hover:scale-110 flex items-center justify-center text-2xl z-40"
+        className="fixed bottom-24 right-6 w-14 h-14 bg-green-500 rounded-full shadow-lg hover:shadow-xl transition-all transform hover:scale-110 flex items-center justify-center text-2xl z-40"
         title="Chat on WhatsApp"
       >
         <svg viewBox="0 0 24 24" className="w-8 h-8 fill-white">
