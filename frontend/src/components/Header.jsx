@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
 import LeadershipModal from './LeadershipModal'
 import AnimatedLogo from './AnimatedLogo'
 import AnimatedSlogan from './AnimatedSlogan'
@@ -50,24 +51,25 @@ export default function Header(){
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex gap-6 text-sm">
-            <a href="#home" className="hover:text-indigo-600">Home</a>
-            <a href="#about" className="hover:text-indigo-600">About</a>
-            <a href="#services" className="hover:text-indigo-600">Services</a>
+            <Link to="/" className="hover:text-indigo-600">Home</Link>
+            <a href="/#about" className="hover:text-indigo-600">About</a>
+            <a href="/#services" className="hover:text-indigo-600">Services</a>
             <button 
               onClick={() => setShowLeadership(true)}
               className="hover:text-indigo-600 font-medium"
             >
               Leadership
             </button>
-            <a href="#contact" className="hover:text-indigo-600">Contact</a>
+            <Link to="/courses" className="hover:text-indigo-600">Courses</Link>
+            <a href="/#contact" className="hover:text-indigo-600">Contact</a>
           </nav>
 
           {/* Mobile Navigation */}
           {mobileMenuOpen && (
             <nav className="md:hidden flex flex-col gap-4 mt-4 pb-4 text-sm border-t pt-4">
-              <a href="#home" onClick={() => setMobileMenuOpen(false)} className="hover:text-indigo-600">Home</a>
-              <a href="#about" onClick={() => setMobileMenuOpen(false)} className="hover:text-indigo-600">About</a>
-              <a href="#services" onClick={() => setMobileMenuOpen(false)} className="hover:text-indigo-600">Services</a>
+              <Link to="/" onClick={() => setMobileMenuOpen(false)} className="hover:text-indigo-600">Home</Link>
+              <a href="/#about" onClick={() => setMobileMenuOpen(false)} className="hover:text-indigo-600">About</a>
+              <a href="/#services" onClick={() => setMobileMenuOpen(false)} className="hover:text-indigo-600">Services</a>
               <button 
                 onClick={() => {
                   setShowLeadership(true)
@@ -77,7 +79,8 @@ export default function Header(){
               >
                 Leadership
               </button>
-              <a href="#contact" onClick={() => setMobileMenuOpen(false)} className="hover:text-indigo-600">Contact</a>
+              <Link to="/courses" onClick={() => setMobileMenuOpen(false)} className="hover:text-indigo-600">Courses</Link>
+              <a href="/#contact" onClick={() => setMobileMenuOpen(false)} className="hover:text-indigo-600">Contact</a>
             </nav>
           )}
         </div>
