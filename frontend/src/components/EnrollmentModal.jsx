@@ -50,11 +50,13 @@ export default function EnrollmentModal({ isOpen, onClose, courseTitle, courseTy
           onClose()
         }, 5000)
       } else {
-        alert('Failed to submit enrollment. Please try again.')
+        const errorData = await response.json().catch(() => ({}))
+        console.error('Server error:', errorData)
+        alert('Failed to submit enrollment. Please contact us directly at 8637271743 or info@infyrontechnology.co.in')
       }
     } catch (error) {
       console.error('Error:', error)
-      alert('Failed to submit enrollment. Please try again.')
+      alert('Failed to submit enrollment. Please contact us directly at 8637271743 or info@infyrontechnology.co.in')
     } finally {
       setIsSubmitting(false)
     }
