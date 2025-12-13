@@ -1,1 +1,0 @@
-Please save Santosh Kumar Padhi's photo as 'santosh.jpg' in frontend/public/assets/ folder
