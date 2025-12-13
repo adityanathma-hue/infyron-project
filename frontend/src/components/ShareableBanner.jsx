@@ -24,7 +24,7 @@ export default function ShareableBanner() {
   }
 
   const shareToWhatsApp = () => {
-    const text = encodeURIComponent('🎓 Infyron Technology Pvt. Ltd.\n\nLeading SAP Training & ERP Solutions Provider\n✅ Professional SAP Courses\n✅ Real-world Internships\n✅ Enterprise Software Development\n✅ 20+ Years Industry Experience\n\nEnroll now:')
+    const text = encodeURIComponent('🎓 LIMITED TIME OFFER at Infyron Technology!\n\nGet Internship + Special Discount\nEnroll now and grab your dream job! 🔥\n\nSeats filling fast! Click here:')
     const url = encodeURIComponent(window.location.origin + '/courses')
     window.open(`https://wa.me/?text=${text}%20${url}`, '_blank')
   }
@@ -35,7 +35,7 @@ export default function ShareableBanner() {
   }
 
   const shareToTwitter = () => {
-    const text = encodeURIComponent('🎓 Infyron Technology - Leading SAP Training & ERP Solutions Provider. Professional courses, real internships, enterprise software development. Transform your career! 🚀')
+    const text = encodeURIComponent('🎓 LIMITED TIME OFFER at Infyron Technology! Get Internship + Special Discount. Enroll now! 🔥')
     const url = encodeURIComponent(window.location.origin + '/courses')
     window.open(`https://twitter.com/intent/tweet?text=${text}&url=${url}`, '_blank')
   }
