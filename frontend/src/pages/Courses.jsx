@@ -11,10 +11,7 @@ export default function Courses() {
   })
 
   const [paymentModal, setPaymentModal] = useState({
-    isOpen: false,
-    courseTitle: '',
-    courseType: '',
-    price: ''
+    isOpen: false
   })
 
   const openEnrollmentModal = (courseTitle, courseType, price) => {
@@ -35,21 +32,15 @@ export default function Courses() {
     })
   }
 
-  const openPaymentModal = (courseTitle, courseType, price) => {
+  const openPaymentModal = () => {
     setPaymentModal({
-      isOpen: true,
-      courseTitle,
-      courseType,
-      price
+      isOpen: true
     })
   }
 
   const closePaymentModal = () => {
     setPaymentModal({
-      isOpen: false,
-      courseTitle: '',
-      courseType: '',
-      price: ''
+      isOpen: false
     })
   }
 
@@ -194,6 +185,22 @@ export default function Courses() {
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 py-12 sm:px-6 lg:px-8">
+        {/* Pay Now Badge - Fixed Top Right Corner */}
+        <div className="fixed top-24 right-6 z-50">
+          <div className="relative">
+            <div className="absolute inset-0 bg-green-500 rounded-full blur-lg opacity-75 animate-pulse"></div>
+            <button
+              onClick={() => openPaymentModal()}
+              className="relative bg-gradient-to-r from-green-500 to-emerald-600 text-white px-6 py-3 rounded-full font-bold text-sm shadow-2xl hover:shadow-3xl transform hover:scale-110 transition-all duration-300 animate-bounce"
+            >
+              💳 PAY NOW
+            </button>
+          </div>
+          <p className="text-center text-xs font-bold text-red-600 mt-2 animate-pulse">
+            Don't Miss!
+          </p>
+        </div>
+
         {/* Header Section */}
         <div className="text-center mb-12">
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
@@ -211,24 +218,8 @@ export default function Courses() {
               key={course.id}
               className="bg-white rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300 overflow-hidden border border-gray-100 relative"
             >
-              {/* Pay Now Badge - Top Right Corner */}
-              <div className="absolute top-4 right-4 z-10">
-                <div className="relative">
-                  <div className="absolute inset-0 bg-green-500 rounded-full blur-md opacity-75 animate-pulse"></div>
-                  <button
-                    onClick={() => openPaymentModal(course.title, 'training', course.price)}
-                    className="relative bg-gradient-to-r from-green-500 to-emerald-600 text-white px-4 py-2 rounded-full font-bold text-xs shadow-xl hover:shadow-2xl transform hover:scale-110 transition-all duration-300 animate-bounce"
-                  >
-                    💳 PAY NOW
-                  </button>
-                </div>
-                <p className="text-center text-[10px] font-bold text-red-600 mt-1 animate-pulse">
-                  Don't Miss!
-                </p>
-              </div>
-
               <div className="bg-gradient-to-r from-indigo-600 to-purple-600 p-6 text-white">
-                <h3 className="text-xl font-bold mb-2 pr-20">{course.title}</h3>
+                <h3 className="text-xl font-bold mb-2">{course.title}</h3>
                 <p className="text-indigo-100 text-sm">{course.duration}</p>
               </div>
 
@@ -285,53 +276,7 @@ export default function Courses() {
           ))}
         </div>
 
-        {/* Pay Now Section - Prominent */}
-        <div className="mt-16 bg-gradient-to-r from-green-50 to-emerald-50 rounded-2xl shadow-2xl p-8 border-2 border-green-300">
-          <div className="text-center mb-6">
-            <h2 className="text-3xl font-bold text-gray-900 mb-3">
-              💳 Ready to Start Your Journey?
-            </h2>
-            <p className="text-lg text-gray-700 mb-6">
-              Make your payment now and get instant confirmation. Select your course below:
-            </p>
-          </div>
-          
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-6xl mx-auto">
-            {courses.map((course) => (
-              <div key={`pay-${course.id}`} className="bg-white rounded-lg p-4 shadow-md hover:shadow-xl transition-all">
-                <h3 className="font-bold text-gray-900 mb-2 text-sm">{course.title}</h3>
-                <div className="space-y-2">
-                  <div className="border-b pb-2">
-                    <p className="text-xs text-gray-500">Training Only</p>
-                    <p className="text-lg font-bold text-indigo-600 mb-2">{course.price}</p>
-                    <button 
-                      onClick={() => openPaymentModal(course.title, 'training', course.price)}
-                      className="w-full bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition font-medium shadow-md hover:shadow-lg transform hover:scale-105"
-                    >
-                      💳 Pay Now
-                    </button>
-                  </div>
-                  <div>
-                    <p className="text-xs text-purple-700 font-semibold">With Internship</p>
-                    <p className="text-lg font-bold text-purple-700 mb-2">{course.internshipPrice}</p>
-                    <button 
-                      onClick={() => openPaymentModal(course.title, 'internship', course.internshipPrice)}
-                      className="w-full bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition font-medium shadow-md hover:shadow-lg transform hover:scale-105"
-                    >
-                      💳 Pay Now
-                    </button>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-          
-          <div className="mt-6 text-center">
-            <p className="text-sm text-gray-600">
-              🔒 Secure payment gateway • All payment methods accepted • Instant receipt via email
-            </p>
-          </div>
-        </div>
+
 
         {/* Additional Info Section */}
         <div className="mt-16 bg-white rounded-xl shadow-lg p-8 border border-gray-100">
@@ -382,9 +327,7 @@ export default function Courses() {
       <PaymentModal
         isOpen={paymentModal.isOpen}
         onClose={closePaymentModal}
-        courseTitle={paymentModal.courseTitle}
-        courseType={paymentModal.courseType}
-        price={paymentModal.price}
+        courses={courses}
       />
     </div>
   )

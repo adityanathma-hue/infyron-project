@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from 'react'
 
-export default function PaymentModal({ isOpen, onClose, courseTitle, courseType, price }) {
+export default function PaymentModal({ isOpen, onClose, courses }) {
+  const [step, setStep] = useState(1)
+  const [selectedCourse, setSelectedCourse] = useState(null)
+  const [selectedType, setSelectedType] = useState('')
+  const [agreedToPolicy, setAgreedToPolicy] = useState(false)
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     phone: '',
-    customAmount: parseInt(price.replace(/[^0-9]/g, ''))
+    customAmount: 0
   })
   const [isProcessing, setIsProcessing] = useState(false)
 
@@ -15,22 +19,49 @@ export default function PaymentModal({ isOpen, onClose, courseTitle, courseType,
   const sgstAmount = Math.round((baseAmount * 9) / 100)
   const totalAmount = baseAmount + gstAmount + sgstAmount
 
-  // Reset custom amount when modal opens with new price
+  // Reset when modal opens
   useEffect(() => {
     if (isOpen) {
-      setFormData(prev => ({
-        ...prev,
-        customAmount: parseInt(price.replace(/[^0-9]/g, ''))
-      }))
+      setStep(1)
+      setSelectedCourse(null)
+      setSelectedType('')
+      setAgreedToPolicy(false)
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        customAmount: 0
+      })
     }
-  }, [isOpen, price])
+  }, [isOpen])
 
   const handleChange = (e) => {
     const { name, value } = e.target
     setFormData({
       ...formData,
-      [name]: name === 'customAmount' ? value : value
+      [name]: value
     })
+  }
+
+  const handleCourseSelect = (course, type) => {
+    setSelectedCourse(course)
+    setSelectedType(type)
+    const amount = type === 'training' 
+      ? parseInt(course.price.replace(/[^0-9]/g, ''))
+      : parseInt(course.internshipPrice.replace(/[^0-9]/g, ''))
+    setFormData(prev => ({
+      ...prev,
+      customAmount: amount
+    }))
+    setStep(2)
+  }
+
+  const handlePolicyNext = () => {
+    if (!agreedToPolicy) {
+      alert('Please agree to the non-refundable policy to continue')
+      return
+    }
+    setStep(2)
   }
 
   const handlePayment = async (e) => {
@@ -113,8 +144,12 @@ export default function PaymentModal({ isOpen, onClose, courseTitle, courseType,
                 name: '',
                 email: '',
                 phone: '',
-                customAmount: parseInt(price.replace(/[^0-9]/g, ''))
+                customAmount: 0
               })
+              setStep(1)
+              setSelectedCourse(null)
+              setSelectedType('')
+              setAgreedToPolicy(false)
               onClose()
             } else {
               setIsProcessing(false)
@@ -164,21 +199,14 @@ export default function PaymentModal({ isOpen, onClose, courseTitle, courseType,
   if (!isOpen) return null
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-      <div className="bg-white rounded-xl shadow-2xl p-8 max-w-md w-full">
+    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4 overflow-y-auto">
+      <div className="bg-white rounded-xl shadow-2xl p-8 max-w-4xl w-full my-8">
         <div className="flex justify-between items-start mb-6">
           <div>
-            <h2 className="text-2xl font-bold text-gray-900 mb-2">Proceed to Payment</h2>
-            <p className="text-indigo-600 font-semibold">{courseTitle}</p>
-            <p className="text-gray-600 text-sm">
-              {courseType === 'internship' ? 'With Internship Program' : 'Training Only'}
-            </p>
-            <div className="mt-3 bg-gray-50 p-3 rounded-lg">
-              <p className="text-sm text-gray-600">Base Amount: ₹{baseAmount.toLocaleString('en-IN')}</p>
-              <p className="text-sm text-gray-600">GST (9%): ₹{gstAmount.toLocaleString('en-IN')}</p>
-              <p className="text-sm text-gray-600">SGST (9%): ₹{sgstAmount.toLocaleString('en-IN')}</p>
-              <p className="text-lg font-bold text-gray-900 mt-2 pt-2 border-t border-gray-300">Total: ₹{totalAmount.toLocaleString('en-IN')}</p>
-            </div>
+            <h2 className="text-2xl font-bold text-gray-900 mb-2">
+              {step === 1 ? 'Non-Refundable Policy & Course Selection' : 'Complete Payment'}
+            </h2>
+            <p className="text-gray-600 text-sm">Step {step} of 2</p>
           </div>
           <button
             onClick={onClose}
@@ -187,6 +215,87 @@ export default function PaymentModal({ isOpen, onClose, courseTitle, courseType,
             ×
           </button>
         </div>
+
+        {/* Step 1: Policy Agreement & Course Selection */}
+        {step === 1 && (
+          <div className="space-y-6">
+            {/* Non-Refundable Policy */}
+            <div className="bg-red-50 border-2 border-red-200 rounded-lg p-6">
+              <h3 className="text-lg font-bold text-red-900 mb-3 flex items-center">
+                <span className="text-2xl mr-2">⚠️</span>
+                Important: Non-Refundable Policy
+              </h3>
+              <div className="text-sm text-red-800 space-y-2 mb-4">
+                <p>• <strong>All payments are non-refundable</strong> once the course has started.</p>
+                <p>• By proceeding, you acknowledge and agree to this policy.</p>
+                <p>• Please ensure you have selected the correct course before payment.</p>
+                <p>• For any queries, contact us at: <strong>+91 8637271743</strong></p>
+              </div>
+              <label className="flex items-center space-x-3 cursor-pointer">
+                <input
+                  type="checkbox"
+                  checked={agreedToPolicy}
+                  onChange={(e) => setAgreedToPolicy(e.target.checked)}
+                  className="w-5 h-5 text-indigo-600 rounded focus:ring-2 focus:ring-indigo-500"
+                />
+                <span className="text-sm font-semibold text-red-900">
+                  I understand and agree to the non-refundable policy
+                </span>
+              </label>
+            </div>
+
+            {/* Course Selection */}
+            {agreedToPolicy && (
+              <div>
+                <h3 className="text-lg font-bold text-gray-900 mb-4">Select Your Course</h3>
+                <div className="grid md:grid-cols-2 gap-4 max-h-96 overflow-y-auto">
+                  {courses && courses.map((course) => (
+                    <div key={course.id} className="border border-gray-200 rounded-lg p-4 hover:border-indigo-500 transition">
+                      <h4 className="font-bold text-gray-900 mb-2">{course.title}</h4>
+                      <p className="text-xs text-gray-600 mb-3">{course.duration}</p>
+                      
+                      <div className="space-y-2">
+                        <button
+                          onClick={() => handleCourseSelect(course, 'training')}
+                          className="w-full text-left bg-gray-50 hover:bg-indigo-50 border border-gray-300 hover:border-indigo-500 rounded-lg p-3 transition"
+                        >
+                          <p className="text-xs text-gray-600">Training Only</p>
+                          <p className="text-lg font-bold text-indigo-600">{course.price}</p>
+                        </button>
+                        
+                        <button
+                          onClick={() => handleCourseSelect(course, 'internship')}
+                          className="w-full text-left bg-purple-50 hover:bg-purple-100 border border-purple-300 hover:border-purple-500 rounded-lg p-3 transition"
+                        >
+                          <p className="text-xs text-purple-700 font-semibold">🎓 With Internship</p>
+                          <p className="text-lg font-bold text-purple-700">{course.internshipPrice}</p>
+                        </button>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+        )}
+
+        {/* Step 2: Payment Details */}
+        {step === 2 && selectedCourse && (
+          <div>
+            <div className="bg-indigo-50 border border-indigo-200 rounded-lg p-4 mb-6">
+              <p className="text-sm text-gray-600">Selected Course:</p>
+              <p className="text-lg font-bold text-indigo-900">{selectedCourse.title}</p>
+              <p className="text-sm text-gray-600">
+                {selectedType === 'internship' ? '🎓 With Internship Program' : '📚 Training Only'}
+              </p>
+            </div>
+
+            <div className="mb-6 bg-gray-50 p-4 rounded-lg">
+              <p className="text-sm text-gray-600">Base Amount: ₹{baseAmount.toLocaleString('en-IN')}</p>
+              <p className="text-sm text-gray-600">GST (9%): ₹{gstAmount.toLocaleString('en-IN')}</p>
+              <p className="text-sm text-gray-600">SGST (9%): ₹{sgstAmount.toLocaleString('en-IN')}</p>
+              <p className="text-lg font-bold text-gray-900 mt-2 pt-2 border-t border-gray-300">Total: ₹{totalAmount.toLocaleString('en-IN')}</p>
+            </div>
 
         <form onSubmit={handlePayment} className="space-y-4">
           <div>
@@ -208,7 +317,7 @@ export default function PaymentModal({ isOpen, onClose, courseTitle, courseType,
               />
             </div>
             <p className="text-xs text-gray-500 mt-1">
-              Suggested: ₹{parseInt(price.replace(/[^0-9]/g, '')).toLocaleString('en-IN')} (You can modify)
+              You can modify the amount if needed (minimum ₹100)
             </p>
           </div>
 
@@ -264,31 +373,33 @@ export default function PaymentModal({ isOpen, onClose, courseTitle, courseType,
               <li>• Credit/Debit Cards</li>
               <li>• UPI (Google Pay, PhonePe, Paytm)</li>
               <li>• Net Banking</li>
-              <li>• Wallets</li>
-            </ul>
-          </div>
+              <div className="flex gap-4 mt-6">
+                <button
+                  type="button"
+                  onClick={() => setStep(1)}
+                  className="flex-1 px-6 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition font-medium"
+                >
+                  ← Back
+                </button>
+                <button
+                  type="submit"
+                  disabled={isProcessing}
+                  className="flex-1 px-6 py-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition font-medium disabled:bg-indigo-400"
+                >
+                  {isProcessing ? 'Processing...' : 'Pay Now'}
+                </button>
+              </div>
+            </form>
 
-          <div className="flex gap-4 mt-6">
-            <button
-              type="button"
-              onClick={onClose}
-              className="flex-1 px-6 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition font-medium"
-            >
-              Cancel
-            </button>
-            <button
-              type="submit"
-              disabled={isProcessing}
-              className="flex-1 px-6 py-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition font-medium disabled:bg-indigo-400"
-            >
-              {isProcessing ? 'Processing...' : 'Pay Now'}
-            </button>
+            <p className="text-xs text-gray-500 text-center mt-4">
+              🔒 Secure payment powered by Razorpay
+            </p>
           </div>
-        </form>
-
-        <p className="text-xs text-gray-500 text-center mt-4">
-          🔒 Secure payment powered by Razorpay
-        </p>
+        )}
+      </div>
+    </div>
+  )
+}       </p>
       </div>
     </div>
   )
