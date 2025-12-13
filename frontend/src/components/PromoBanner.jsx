@@ -1,33 +1,8 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 
 export default function PromoBanner() {
   const [isVisible, setIsVisible] = useState(true)
-  const [timeLeft, setTimeLeft] = useState({
-    days: 0,
-    hours: 0,
-    minutes: 0,
-    seconds: 0
-  })
-
-  useEffect(() => {
-    // Set countdown to 30 days from now
-    const countDownDate = new Date().getTime() + (30 * 24 * 60 * 60 * 1000)
-
-    const timer = setInterval(() => {
-      const now = new Date().getTime()
-      const distance = countDownDate - now
-
-      setTimeLeft({
-        days: Math.floor(distance / (1000 * 60 * 60 * 24)),
-        hours: Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
-        minutes: Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)),
-        seconds: Math.floor((distance % (1000 * 60)) / 1000)
-      })
-    }, 1000)
-
-    return () => clearInterval(timer)
-  }, [])
 
   if (!isVisible) return null
 
@@ -59,25 +34,6 @@ export default function PromoBanner() {
         </div>
 
         <div className="flex items-center gap-4">
-          <div className="hidden sm:flex gap-2 text-center">
-            <div className="bg-white/20 backdrop-blur rounded px-2 py-1">
-              <div className="text-lg font-bold">{timeLeft.days}</div>
-              <div className="text-xs opacity-80">Days</div>
-            </div>
-            <div className="bg-white/20 backdrop-blur rounded px-2 py-1">
-              <div className="text-lg font-bold">{timeLeft.hours}</div>
-              <div className="text-xs opacity-80">Hrs</div>
-            </div>
-            <div className="bg-white/20 backdrop-blur rounded px-2 py-1">
-              <div className="text-lg font-bold">{timeLeft.minutes}</div>
-              <div className="text-xs opacity-80">Min</div>
-            </div>
-            <div className="bg-white/20 backdrop-blur rounded px-2 py-1">
-              <div className="text-lg font-bold">{timeLeft.seconds}</div>
-              <div className="text-xs opacity-80">Sec</div>
-            </div>
-          </div>
-
           <Link
             to="/courses"
             target="_blank"
