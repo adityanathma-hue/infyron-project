@@ -77,7 +77,7 @@ router.post('/create-order', async (req, res) => {
 // Verify Payment
 router.post('/verify', async (req, res) => {
   try {
-    const { orderId, paymentId, signature, courseTitle, courseType, customerName, customerEmail, customerPhone } = req.body;
+    const { orderId, paymentId, signature, courseTitle, courseType, customerName, customerEmail, customerPhone, acknowledgments } = req.body;
 
     // Verify signature
     const generatedSignature = crypto
@@ -115,7 +115,7 @@ router.post('/verify', async (req, res) => {
     }
     
     const pdfPath = path.join(pdfDir, `payment_slip_${receiptNumber}.pdf`);
-    await generatePaymentSlip(payment, pdfPath);
+    await generatePaymentSlip(payment, pdfPath, acknowledgments);
 
     // Read PDF as base64 for email attachment
     const pdfBuffer = fs.readFileSync(pdfPath);

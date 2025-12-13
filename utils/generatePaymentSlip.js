@@ -2,7 +2,7 @@ const PDFDocument = require('pdfkit');
 const fs = require('fs');
 const path = require('path');
 
-function generatePaymentSlip(payment, outputPath) {
+function generatePaymentSlip(payment, outputPath, acknowledgments = []) {
   return new Promise((resolve, reject) => {
     try {
       const doc = new PDFDocument({ size: 'A4', margin: 50 });
@@ -112,8 +112,22 @@ function generatePaymentSlip(payment, outputPath) {
       currentY += 35;
       doc.strokeColor('#CCCCCC').lineWidth(1).moveTo(50, currentY).lineTo(545, currentY).stroke();
 
+      // Acknowledgments Section
+      if (acknowledgments && acknowledgments.length > 0) {
+        doc.moveDown(2);
+        doc.fontSize(11).fillColor('#6366F1').font('Helvetica-Bold');
+        doc.text('IMPORTANT ACKNOWLEDGMENTS', 50);
+        doc.moveDown(0.5);
+        
+        doc.fontSize(9).fillColor('#000000').font('Helvetica');
+        acknowledgments.forEach((ack, index) => {
+          doc.text(`${index + 1}. ${ack}`, 70, doc.y, { width: 475 });
+          doc.moveDown(0.3);
+        });
+      }
+
       // Footer Section
-      doc.moveDown(3);
+      doc.moveDown(2);
       doc.fontSize(9).fillColor('#666666').font('Helvetica');
       doc.text('This is a computer-generated receipt and does not require a physical signature.', { align: 'center' });
       doc.moveDown(0.5);

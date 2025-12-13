@@ -106,8 +106,15 @@ export default function PaymentModal({ isOpen, onClose, courses }) {
       })
 
       if (!response.ok) {
-        const errorData = await response.json()
-        throw new Error(errorData.message || 'Failed to create payment order')
+        let errorMessage = 'Failed to create payment order'
+        try {
+          const errorData = await response.json()
+          errorMessage = errorData.message || errorMessage
+        } catch (e) {
+          // Response is not JSON, possibly HTML error page
+          errorMessage = `Server error (${response.status}). Please try again or contact support.`
+        }
+        throw new Error(errorMessage)
       }
 
       const order = await response.json()
@@ -136,7 +143,14 @@ export default function PaymentModal({ isOpen, onClose, courses }) {
                 courseType,
                 customerName: formData.name,
                 customerEmail: formData.email,
-                customerPhone: formData.phone
+                customerPhone: formData.phone,
+                acknowledgments: [
+                  'Payment is non-refundable',
+                  'Course access will be provided within 24 hours',
+                  'Advised to consult with advisor before amount modification',
+                  'GST & SGST (18% total) included in total amount',
+                  'Receipt will be sent via email'
+                ]
               })
             })
 
@@ -322,6 +336,9 @@ export default function PaymentModal({ isOpen, onClose, courses }) {
             </div>
             <p className="text-xs text-gray-500 mt-1">
               You can modify the amount if needed (minimum ₹100)
+            </p>
+            <p className="text-xs text-amber-600 font-medium mt-1">
+              ⚠️ Please consult with your advisor before modifying the payment amount
             </p>
           </div>
 
