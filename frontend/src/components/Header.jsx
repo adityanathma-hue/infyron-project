@@ -60,7 +60,7 @@ export default function Header(){
             >
               Leadership
             </button>
-            <Link to="/courses" className="hover:text-indigo-600">Courses</Link>
+            <Link to="/courses" target="_blank" rel="noopener noreferrer" className="hover:text-indigo-600">Courses</Link>
             <a href="/#contact" className="hover:text-indigo-600">Contact</a>
           </nav>
 
@@ -79,7 +79,7 @@ export default function Header(){
               >
                 Leadership
               </button>
-              <Link to="/courses" onClick={() => setMobileMenuOpen(false)} className="hover:text-indigo-600">Courses</Link>
+              <Link to="/courses" target="_blank" rel="noopener noreferrer" onClick={() => setMobileMenuOpen(false)} className="hover:text-indigo-600">Courses</Link>
               <a href="/#contact" onClick={() => setMobileMenuOpen(false)} className="hover:text-indigo-600">Contact</a>
             </nav>
           )}
