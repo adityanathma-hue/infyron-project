@@ -40,39 +40,48 @@ export default function Courses() {
     },
     {
       id: 5,
-      title: 'Full Stack Development (MERN)',
-      description: 'Complete web development with MongoDB, Express, React, and Node.js.',
+      title: 'Full Stack Development (Java)',
+      description: 'Complete enterprise Java development with Spring Boot, Hibernate, and Microservices.',
       duration: '4 months',
       price: '₹60,000',
       internshipPrice: '₹70,000',
-      features: ['MongoDB', 'Express.js', 'React.js', 'Node.js', 'REST APIs', 'Deployment']
+      features: ['Core Java', 'Spring Boot', 'Hibernate', 'Microservices', 'REST APIs', 'Deployment']
     },
     {
       id: 6,
-      title: 'Data Analytics & Visualization',
-      description: 'Learn data analysis, SQL, Python, and visualization tools for business insights.',
-      duration: '3 months',
-      price: '₹45,000',
-      internshipPrice: '₹55,000',
-      features: ['SQL', 'Python', 'Power BI', 'Tableau', 'Excel Analytics', 'Statistics']
+      title: 'SAP Material Management (MM)',
+      description: 'Learn SAP MM module for procurement, inventory management, and material master data.',
+      duration: '2.5 months',
+      price: '₹40,000',
+      internshipPrice: '₹50,000',
+      features: ['Material Master', 'Procurement', 'Inventory Management', 'Vendor Management', 'Purchase Orders']
     },
     {
       id: 7,
-      title: 'DevOps & Cloud Engineering',
-      description: 'Master CI/CD, containerization, orchestration, and cloud platforms.',
+      title: 'SAP Sales and Distribution (SD)',
+      description: 'Master SAP SD module for sales processes, pricing, delivery, and billing.',
       duration: '3 months',
-      price: '₹50,000',
-      internshipPrice: '₹60,000',
-      features: ['Docker', 'Kubernetes', 'Jenkins', 'AWS/Azure', 'Git', 'Terraform']
+      price: '₹42,000',
+      internshipPrice: '₹52,000',
+      features: ['Sales Orders', 'Pricing', 'Delivery Process', 'Billing', 'Customer Master', 'Credit Management']
     },
     {
       id: 8,
-      title: 'AI & Machine Learning Fundamentals',
-      description: 'Introduction to AI, ML algorithms, deep learning, and practical applications.',
-      duration: '4 months',
-      price: '₹65,000',
-      internshipPrice: '₹75,000',
-      features: ['Python', 'ML Algorithms', 'TensorFlow', 'Neural Networks', 'NLP', 'Projects']
+      title: 'SAP Environment, Health & Safety Management (EHSM)',
+      description: 'Comprehensive training on SAP EHS for managing environmental compliance and safety.',
+      duration: '2 months',
+      price: '₹38,000',
+      internshipPrice: '₹48,000',
+      features: ['Incident Management', 'Waste Management', 'Compliance', 'Risk Assessment', 'Safety Reports']
+    },
+    {
+      id: 9,
+      title: 'SAP Human Capital Management (HCM)',
+      description: 'Learn SAP HCM/SuccessFactors for personnel management, payroll, and talent management.',
+      duration: '3 months',
+      price: '₹45,000',
+      internshipPrice: '₹55,000',
+      features: ['Personnel Administration', 'Payroll', 'Time Management', 'Talent Management', 'Organizational Management']
     }
   ]
 
