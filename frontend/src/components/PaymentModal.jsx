@@ -1,23 +1,35 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 export default function PaymentModal({ isOpen, onClose, courseTitle, courseType, price }) {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    phone: ''
+    phone: '',
+    customAmount: parseInt(price.replace(/[^0-9]/g, ''))
   })
   const [isProcessing, setIsProcessing] = useState(false)
 
-  // Calculate GST and SGST (9% each = 18% total)
-  const baseAmount = parseInt(price.replace(/[^0-9]/g, ''))
+  // Calculate GST and SGST (9% each = 18% total) based on custom amount
+  const baseAmount = parseInt(formData.customAmount) || 0
   const gstAmount = Math.round((baseAmount * 9) / 100)
   const sgstAmount = Math.round((baseAmount * 9) / 100)
   const totalAmount = baseAmount + gstAmount + sgstAmount
 
+  // Reset custom amount when modal opens with new price
+  useEffect(() => {
+    if (isOpen) {
+      setFormData(prev => ({
+        ...prev,
+        customAmount: parseInt(price.replace(/[^0-9]/g, ''))
+      }))
+    }
+  }, [isOpen, price])
+
   const handleChange = (e) => {
+    const { name, value } = e.target
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [name]: name === 'customAmount' ? value : value
     })
   }
 
@@ -80,12 +92,22 @@ export default function PaymentModal({ isOpen, onClose, courseTitle, courseType,
             })
 
             if (verifyResponse.ok) {
-              alert('✅ Payment Successful! Our team will contact you shortly.')
+              setIsProcessing(false)
+              alert('✅ Payment Successful! Check your email for the receipt. Our team will contact you shortly.')
+              // Reset form
+              setFormData({
+                name: '',
+                email: '',
+                phone: '',
+                customAmount: parseInt(price.replace(/[^0-9]/g, ''))
+              })
               onClose()
             } else {
-              alert('Payment verification failed. Please contact us.')
+              setIsProcessing(false)
+              alert('Payment verification failed. Please contact us with your payment details.')
             }
           } catch (error) {
+            setIsProcessing(false)
             alert('Payment verification error. Please contact us with your payment details.')
           }
         },
@@ -105,6 +127,10 @@ export default function PaymentModal({ isOpen, onClose, courseTitle, courseType,
       }
 
       const razorpay = new window.Razorpay(options)
+      razorpay.on('payment.failed', function (response) {
+        setIsProcessing(false)
+        alert('Payment failed. Please try again.')
+      })
       razorpay.open()
     } catch (error) {
       console.error('Payment error:', error)
@@ -141,6 +167,29 @@ export default function PaymentModal({ isOpen, onClose, courseTitle, courseType,
         </div>
 
         <form onSubmit={handlePayment} className="space-y-4">
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+              Payment Amount <span className="text-red-500">*</span>
+            </label>
+            <div className="relative">
+              <span className="absolute left-4 top-2.5 text-gray-500">₹</span>
+              <input
+                type="number"
+                name="customAmount"
+                value={formData.customAmount}
+                onChange={handleChange}
+                required
+                min="100"
+                step="1"
+                className="w-full pl-8 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent font-semibold"
+                placeholder="Enter amount"
+              />
+            </div>
+            <p className="text-xs text-gray-500 mt-1">
+              Suggested: ₹{parseInt(price.replace(/[^0-9]/g, '')).toLocaleString('en-IN')} (You can modify)
+            </p>
+          </div>
+
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">
               Full Name <span className="text-red-500">*</span>
