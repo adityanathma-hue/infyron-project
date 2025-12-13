@@ -22,6 +22,19 @@ router.post('/create-order', async (req, res) => {
   try {
     const { amount, baseAmount, gstAmount, sgstAmount, courseTitle, courseType, customerName, customerEmail, customerPhone } = req.body;
 
+    // Validate input
+    if (!amount || amount < 100) {
+      return res.status(400).json({ message: 'Invalid amount. Minimum ₹100 required.' });
+    }
+
+    if (!customerName || !customerEmail || !customerPhone) {
+      return res.status(400).json({ message: 'Customer details are required.' });
+    }
+
+    if (!courseTitle || !courseType) {
+      return res.status(400).json({ message: 'Course details are required.' });
+    }
+
     // Create Razorpay order
     const options = {
       amount: amount * 100, // amount in paise

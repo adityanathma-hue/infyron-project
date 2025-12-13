@@ -35,6 +35,19 @@ export default function PaymentModal({ isOpen, onClose, courseTitle, courseType,
 
   const handlePayment = async (e) => {
     e.preventDefault()
+    
+    // Validate amount
+    if (!formData.customAmount || formData.customAmount < 100) {
+      alert('Please enter a valid amount (minimum ₹100)')
+      return
+    }
+
+    // Check if Razorpay is loaded
+    if (!window.Razorpay) {
+      alert('Payment system is loading. Please try again in a moment.')
+      return
+    }
+
     setIsProcessing(true)
 
     try {
@@ -57,11 +70,12 @@ export default function PaymentModal({ isOpen, onClose, courseTitle, courseType,
         })
       })
 
-      const order = await response.json()
-
       if (!response.ok) {
-        throw new Error('Failed to create payment order')
+        const errorData = await response.json()
+        throw new Error(errorData.message || 'Failed to create payment order')
       }
+
+      const order = await response.json()
 
       // Initialize Razorpay payment
       const options = {
@@ -129,13 +143,21 @@ export default function PaymentModal({ isOpen, onClose, courseTitle, courseType,
       const razorpay = new window.Razorpay(options)
       razorpay.on('payment.failed', function (response) {
         setIsProcessing(false)
-        alert('Payment failed. Please try again.')
+        alert('Payment failed: ' + (response.error?.description || 'Please try again'))
       })
       razorpay.open()
     } catch (error) {
       console.error('Payment error:', error)
-      alert('Failed to initiate payment. Please try again or contact us directly.')
       setIsProcessing(false)
+      
+      // Show specific error message
+      if (error.message.includes('Failed to fetch')) {
+        alert('Unable to connect to payment server. Please check your internet connection and try again.')
+      } else if (error.message.includes('create payment order')) {
+        alert('Payment order creation failed. Please contact us at +91 8637271743 or try again later.')
+      } else {
+        alert('Error: ' + error.message + '\n\nPlease contact us if this persists: +91 8637271743')
+      }
     }
   }
 
