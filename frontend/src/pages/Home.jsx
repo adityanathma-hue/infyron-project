@@ -418,12 +418,93 @@ function IndustryExpert(){
             </div>
           </div>
         </div>
+
+        {/* Santosh Kumar Padhi - Embedded Systems Expert */}
+        <div className="bg-white rounded-xl shadow-xl overflow-hidden mt-8">
+          <div className="flex flex-col md:flex-row-reverse items-center">
+            {/* Image Section */}
+            <div className="w-full md:w-1/3 p-8">
+              <img 
+                src="/assets/santosh.jpg" 
+                alt="Santosh Kumar Padhi - Embedded Systems Expert"
+                className="w-64 h-64 rounded-full mx-auto object-cover shadow-2xl border-4 border-purple-600"
+                loading="lazy"
+              />
+            </div>
+            
+            {/* Content Section */}
+            <div className="w-full md:w-2/3 p-8">
+              <div className="mb-4">
+                <h3 className="text-3xl font-bold text-gray-800">Santosh Kumar Padhi</h3>
+                <p className="text-xl text-purple-600 font-semibold mt-2">Senior Embedded Systems Expert</p>
+                <div className="flex flex-wrap items-center gap-2 mt-3">
+                  <span className="inline-block px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-sm font-semibold">
+                    IoT Specialist
+                  </span>
+                  <span className="inline-block px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm font-semibold">
+                    8+ Years Experience
+                  </span>
+                  <span className="inline-block px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm font-semibold">
+                    Industry Veteran
+                  </span>
+                </div>
+              </div>
+              
+              <div className="space-y-4 text-gray-700 leading-relaxed">
+                <p className="text-lg">
+                  <strong>Santosh Kumar Padhi</strong> brings over <strong>8 years of specialized expertise</strong> in embedded systems, IoT solutions, and hardware-software integration. He has successfully designed and deployed mission-critical embedded systems for automotive, industrial automation, and consumer electronics sectors.
+                </p>
+                
+                <p className="text-lg">
+                  With extensive experience in <strong>ARM Cortex microcontrollers, RTOS, firmware development, and IoT platforms</strong>, Santosh has worked with leading technology companies to create innovative embedded solutions. His expertise spans from low-level device drivers to complex IoT ecosystems.
+                </p>
+                
+                <p className="text-lg">
+                  Learn from a seasoned professional who has hands-on experience in real-world embedded projects, including automotive ECUs, industrial control systems, and smart devices. Get practical knowledge in <strong>C/C++, embedded Linux, sensor integration, wireless communication protocols</strong>, and modern IoT architectures.
+                </p>
+                
+                <div className="mt-6 flex flex-wrap gap-3">
+                  <div className="flex items-center gap-2 text-gray-600">
+                    <span className="text-purple-600">✓</span>
+                    <span>Embedded C/C++</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-gray-600">
+                    <span className="text-purple-600">✓</span>
+                    <span>ARM Cortex-M</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-gray-600">
+                    <span className="text-purple-600">✓</span>
+                    <span>RTOS (FreeRTOS)</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-gray-600">
+                    <span className="text-purple-600">✓</span>
+                    <span>IoT Solutions</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-gray-600">
+                    <span className="text-purple-600">✓</span>
+                    <span>Embedded Linux</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-gray-600">
+                    <span className="text-purple-600">✓</span>
+                    <span>Protocol (I2C/SPI/UART)</span>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="mt-8">
+                <a href="#contact" className="bg-purple-600 text-white px-6 py-3 rounded-lg hover:bg-purple-700 transition inline-block font-semibold">
+                  Enroll in Embedded Systems Training
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   )
 }
 
-export default function Home(){
+export default function Home() {
   return (
     <div>
       <PromoPopup />
