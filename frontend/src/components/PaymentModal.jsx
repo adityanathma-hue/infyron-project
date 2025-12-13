@@ -87,7 +87,8 @@ export default function PaymentModal({ isOpen, onClose, courses }) {
 
     try {
       // Create order on backend
-      const response = await fetch('https://infyron-project.onrender.com/api/payment/create-order', {
+      const API_URL = import.meta.env.VITE_API_URL || 'https://infyron-project.onrender.com'
+      const response = await fetch(`${API_URL}/api/payment/create-order`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -130,7 +131,8 @@ export default function PaymentModal({ isOpen, onClose, courses }) {
         handler: async function (response) {
           // Payment successful
           try {
-            const verifyResponse = await fetch('https://infyron-project.onrender.com/api/payment/verify', {
+            const API_URL = import.meta.env.VITE_API_URL || 'https://infyron-project.onrender.com'
+            const verifyResponse = await fetch(`${API_URL}/api/payment/verify`, {
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json'
