@@ -10,15 +10,17 @@ function generatePaymentSlip(payment, outputPath, acknowledgments = []) {
 
       doc.pipe(stream);
 
-      // Add watermark company logo in background (not CEO photo)
-      const logoPath = path.join(__dirname, '../frontend/public/assets/logo.svg');
-      const pngLogoPath = path.join(__dirname, '../frontend/public/assets/Gemini_Generated_Image_qovcidqovcidqovc.png');
+      // Add watermark company logo in background (use logo.svg or fallback to company logo PNG, NOT CEO photo)
+      const companyLogoPath = path.join(__dirname, '../frontend/public/assets/logo.svg');
       
-      if (fs.existsSync(pngLogoPath)) {
-        // Add faded background company logo
+      // If SVG not available, use the company logo PNG (Gemini image is company logo, not CEO photo)
+      const companyLogoPngPath = path.join(__dirname, '../frontend/public/assets/Gemini_Generated_Image_qovcidqovcidqovc.png');
+      
+      if (fs.existsSync(companyLogoPngPath)) {
+        // Add faded background company logo watermark
         doc.save();
-        doc.opacity(0.08);
-        doc.image(pngLogoPath, 150, 300, { width: 300 });
+        doc.opacity(0.06);
+        doc.image(companyLogoPngPath, 170, 320, { width: 250 });
         doc.restore();
       }
 
@@ -30,19 +32,20 @@ function generatePaymentSlip(payment, outputPath, acknowledgments = []) {
       doc.rect(40, 40, 515, 80).fill();
       doc.restore();
 
-      // Company Logo in Header (left side)
-      if (fs.existsSync(pngLogoPath)) {
-        doc.image(pngLogoPath, 55, 50, { width: 60, height: 60 });
+      // Company Logo in Header (left side - use company logo only)
+      if (fs.existsSync(companyLogoPngPath)) {
+        doc.image(companyLogoPngPath, 55, 50, { width: 60, height: 60 });
       }
 
       // Company Details in Header (right side with white text)
-      doc.fontSize(22).fillColor('#FFFFFF').font('Helvetica-Bold')
-         .text('INFYRON TECHNOLOGY PVT. LTD.', 130, 52, { width: 400 });
+      doc.fontSize(20).fillColor('#FFFFFF').font('Helvetica-Bold')
+         .text('INFYRON TECHNOLOGY PVT. LTD.', 130, 48, { width: 400 });
       
-      doc.fontSize(8).fillColor('#FFFFFF').font('Helvetica');
-      doc.text('📧 info@infyrontechnology.co.in', 130, 78, { width: 400 });
-      doc.text('📞 +91 8637271743', 130, 90, { width: 400 });
-      doc.text('🌐 www.infyrontechnology.co.in', 130, 102, { width: 400 });
+      doc.fontSize(7).fillColor('#FFFFFF').font('Helvetica');
+      doc.text('Address: Bhubaneswar, Odisha, India', 130, 72, { width: 400 });
+      doc.text('Email: info@infyrontechnology.co.in', 130, 83, { width: 400 });
+      doc.text('Phone: +91 8637271743', 130, 94, { width: 400 });
+      doc.text('Website: www.infyrontechnology.co.in', 130, 105, { width: 400 });
       
       doc.moveDown(3);
 
@@ -157,67 +160,75 @@ function generatePaymentSlip(payment, outputPath, acknowledgments = []) {
       }
 
       // Digital Signature and Stamp Section
-      doc.moveDown(1);
+      doc.moveDown(0.8);
       const signatureY = doc.y;
 
-      // Digital Stamp (left side - circular stamp design)
+      // Genuine Digital Stamp (left side - official round stamp)
       doc.save();
-      doc.translate(100, signatureY + 30);
+      doc.translate(120, signatureY + 35);
       
-      // Outer circle - red
-      doc.circle(0, 0, 35).lineWidth(3).strokeColor('#DC2626').stroke();
+      // Outer red circle (bold)
+      doc.circle(0, 0, 40).lineWidth(4).strokeColor('#B91C1C').stroke();
       
-      // Inner circle - blue
-      doc.circle(0, 0, 30).lineWidth(1.5).strokeColor('#6366F1').stroke();
+      // Middle circle
+      doc.circle(0, 0, 36).lineWidth(1).strokeColor('#DC2626').stroke();
       
-      // Company name in arc (top)
-      doc.fontSize(7).fillColor('#DC2626').font('Helvetica-Bold');
-      doc.text('INFYRON TECHNOLOGY', -30, -25, { width: 60, align: 'center' });
+      // Inner blue circle
+      doc.circle(0, 0, 32).lineWidth(2).strokeColor('#1E40AF').stroke();
       
-      // PVT. LTD. (bottom)
-      doc.fontSize(6).fillColor('#DC2626');
-      doc.text('PVT. LTD.', -25, 15, { width: 50, align: 'center' });
+      // Company name curved at top
+      doc.fontSize(6).fillColor('#B91C1C').font('Helvetica-Bold');
+      doc.text('INFYRON TECHNOLOGY', -32, -22, { width: 64, align: 'center' });
       
-      // Center star/seal
-      doc.fontSize(14).fillColor('#6366F1');
-      doc.text('★', -5, -5);
+      // PVT. LTD. curved at bottom
+      doc.fontSize(5.5).fillColor('#B91C1C').font('Helvetica-Bold');
+      doc.text('PVT. LTD.', -28, 16, { width: 56, align: 'center' });
+      
+      // Center - Govt of India style emblem
+      doc.fontSize(10).fillColor('#1E40AF').font('Helvetica-Bold');
+      doc.text('✓', -4, -8);
+      
+      doc.fontSize(5).fillColor('#1E40AF').font('Helvetica-Bold');
+      doc.text('AUTHORIZED', -18, -2, { width: 36, align: 'center' });
+      doc.text('SIGNATORY', -18, 5, { width: 36, align: 'center' });
       
       doc.restore();
 
-      // Digital Signature (right side)
-      doc.fontSize(9).fillColor('#000000').font('Helvetica');
-      doc.text('Authorized Signatory', 380, signatureY, { align: 'left' });
+      // CEO Digital Signature with Stamp (right side)
+      doc.fontSize(8).fillColor('#374151').font('Helvetica');
+      doc.text('For INFYRON TECHNOLOGY PVT. LTD.', 360, signatureY);
       
-      // CEO signature line (handwritten style text)
-      doc.fontSize(16).fillColor('#1F2937').font('Helvetica-Oblique');
-      doc.text('CEO Signature', 380, signatureY + 15);
+      // Handwritten style signature
+      doc.fontSize(20).fillColor('#1F2937').font('Helvetica-BoldOblique');
+      doc.text('Authorized Signature', 360, signatureY + 18);
       
-      doc.fontSize(8).fillColor('#6B7280').font('Helvetica');
-      doc.text('Chief Executive Officer', 380, signatureY + 35);
-      doc.text('Infyron Technology Pvt. Ltd.', 380, signatureY + 45);
+      // Small digital stamp overlay on signature
+      doc.save();
+      doc.translate(480, signatureY + 30);
+      doc.circle(0, 0, 15).lineWidth(2).strokeColor('#B91C1C').opacity(0.7).stroke();
+      doc.fontSize(4).fillColor('#B91C1C').font('Helvetica-Bold');
+      doc.text('CEO', -6, -3);
+      doc.restore();
+      
+      doc.fontSize(7).fillColor('#6B7280').font('Helvetica');
+      doc.text('Chief Executive Officer', 360, signatureY + 42);
+      doc.text('Date: ' + new Date(payment.paidAt).toLocaleDateString('en-IN'), 360, signatureY + 52);
 
       // Footer Section
-      doc.moveDown(1);
-      doc.fontSize(8).fillColor('#6B7280').font('Helvetica-Oblique');
-      doc.text('This is a digitally generated receipt and does not require a physical signature.', 50, 750, { 
+      doc.moveDown(0.8);
+      doc.fontSize(7).fillColor('#6B7280').font('Helvetica-Oblique');
+      doc.text('This is a computer-generated receipt. Digital signature is valid without physical stamp.', 50, 755, { 
         align: 'center',
         width: 495
       });
       
-      // Thank you note with gradient background
-      doc.save();
-      doc.linearGradient(180, 710, 415, 730)
-         .stop(0, '#10B981')
-         .stop(1, '#059669');
-      doc.roundedRect(180, 710, 235, 25, 5).fill();
-      doc.restore();
-      
-      doc.fontSize(12).fillColor('#FFFFFF').font('Helvetica-Bold');
-      doc.text('Thank You for Choosing Us!', 180, 716, { width: 235, align: 'center' });
+      // Simple thank you note
+      doc.fontSize(11).fillColor('#10B981').font('Helvetica-Bold');
+      doc.text('Thank You for Choosing Infyron Technology!', 50, 770, { align: 'center', width: 495 });
 
-      // Add colorful page border
+      // Simple border
       doc.save();
-      doc.strokeColor('#6366F1').lineWidth(4)
+      doc.strokeColor('#6366F1').lineWidth(3)
         .rect(40, 40, 515, 752).stroke();
       doc.restore();
 
