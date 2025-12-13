@@ -14,7 +14,7 @@ function Hero(){
   const [showShareMenu, setShowShareMenu] = React.useState(false)
 
   const shareToWhatsApp = () => {
-    const text = encodeURIComponent('🎓 LIMITED TIME OFFER at Infyron Technology!\n\nGet Internship + Special Discount\nEnroll now and grab your dream job! 🔥\n\nVisit: ' + window.location.origin + '/courses')
+    const text = encodeURIComponent('🎓 Infyron Technology Pvt. Ltd.\n\nLeading provider of SAP Training & ERP Solutions\n✅ Professional SAP Courses\n✅ Real-world Internships\n✅ Enterprise Software Development\n\nEnroll now: ' + window.location.origin + '/courses')
     window.open(`https://wa.me/?text=${text}`, '_blank')
     setShowShareMenu(false)
   }
