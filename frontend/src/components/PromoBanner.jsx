@@ -6,8 +6,8 @@ export default function PromoBanner() {
 
   const handleShare = async () => {
     const shareData = {
-      title: 'Infyron Technology - Limited Time Offer!',
-      text: '🎓 Get Internship + Special Discount! Enroll now at Infyron Technology and grab your dream job! Hurry, seats filling fast! 🔥',
+      title: 'Infyron Technology - SAP Training & ERP Solutions',
+      text: '🎓 Infyron Technology Pvt. Ltd. - Leading provider of SAP Training & ERP Solutions. Professional courses, real internships, and enterprise software development. Transform your career today! 🚀',
       url: window.location.origin + '/courses'
     }
 
