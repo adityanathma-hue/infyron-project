@@ -176,8 +176,8 @@ export default function Courses() {
       title: 'Embedded Systems & IoT Development',
       description: 'Master embedded systems programming with ARM Cortex, RTOS, IoT protocols, and real-world hardware projects.',
       duration: '4 months',
-      price: '₹55,000',
-      internshipPrice: '₹65,000',
+      price: '₹26,000',
+      internshipPrice: '₹33,000',
       features: ['Embedded C/C++', 'ARM Cortex-M Programming', 'FreeRTOS', 'IoT Protocols (MQTT/HTTP)', 'Sensor Integration', 'PCB Design Basics', 'Industry Projects']
     }
   ]
