@@ -45,6 +45,7 @@ export default function Courses() {
   }
 
   const courses = [
+    // SAP Courses
     {
       id: 1,
       title: 'SAP ABAP Development',
@@ -83,15 +84,6 @@ export default function Courses() {
     },
     {
       id: 5,
-      title: 'Full Stack Development (Java)',
-      description: 'Complete enterprise Java development with Spring Boot, Hibernate, and Microservices.',
-      duration: '4 months',
-      price: '₹30,000',
-      internshipPrice: '₹40,000',
-      features: ['Core Java', 'Spring Boot', 'Hibernate', 'Microservices', 'REST APIs', 'Deployment']
-    },
-    {
-      id: 6,
       title: 'SAP Material Management (MM)',
       description: 'Learn SAP MM module for procurement, inventory management, and material master data.',
       duration: '2.5 months',
@@ -100,7 +92,7 @@ export default function Courses() {
       features: ['Material Master', 'Procurement', 'Inventory Management', 'Vendor Management', 'Purchase Orders']
     },
     {
-      id: 7,
+      id: 6,
       title: 'SAP Sales and Distribution (SD)',
       description: 'Master SAP SD module for sales processes, pricing, delivery, and billing.',
       duration: '3 months',
@@ -109,7 +101,7 @@ export default function Courses() {
       features: ['Sales Orders', 'Pricing', 'Delivery Process', 'Billing', 'Customer Master', 'Credit Management']
     },
     {
-      id: 8,
+      id: 7,
       title: 'SAP Environment, Health & Safety Management (EHSM)',
       description: 'Comprehensive training on SAP EHS for managing environmental compliance and safety.',
       duration: '2 months',
@@ -118,7 +110,7 @@ export default function Courses() {
       features: ['Incident Management', 'Waste Management', 'Compliance', 'Risk Assessment', 'Safety Reports']
     },
     {
-      id: 9,
+      id: 8,
       title: 'SAP Human Capital Management (HCM)',
       description: 'Learn SAP HCM/SuccessFactors for personnel management, payroll, and talent management.',
       duration: '3 months',
@@ -126,8 +118,29 @@ export default function Courses() {
       internshipPrice: '₹30,000',
       features: ['Personnel Administration', 'Payroll', 'Time Management', 'Talent Management', 'Organizational Management']
     },
+    // Java Course
+    {
+      id: 9,
+      title: 'Full Stack Development (Java)',
+      description: 'Complete enterprise Java development with Spring Boot, Hibernate, and Microservices.',
+      duration: '4 months',
+      price: '₹30,000',
+      internshipPrice: '₹40,000',
+      features: ['Core Java', 'Spring Boot', 'Hibernate', 'Microservices', 'REST APIs', 'Deployment']
+    },
+    // Embedded Systems Course
     {
       id: 10,
+      title: 'Embedded Systems & IoT Development',
+      description: 'Master embedded systems programming with ARM Cortex, RTOS, IoT protocols, and real-world hardware projects.',
+      duration: '4 months',
+      price: '₹26,000',
+      internshipPrice: '₹33,000',
+      features: ['Embedded C/C++', 'ARM Cortex-M Programming', 'FreeRTOS', 'IoT Protocols (MQTT/HTTP)', 'Sensor Integration', 'PCB Design Basics', 'Industry Projects']
+    },
+    // High School / Diploma Courses
+    {
+      id: 11,
       title: 'Computer Basics & MS Office (High School)',
       description: 'Foundation course for high school students covering computer fundamentals and MS Office applications.',
       duration: '2 months',
@@ -136,7 +149,7 @@ export default function Courses() {
       features: ['Computer Fundamentals', 'MS Word', 'MS Excel', 'MS PowerPoint', 'Internet Basics', 'Typing Skills']
     },
     {
-      id: 11,
+      id: 12,
       title: 'Web Development Basics (High School/Diploma)',
       description: 'Introduction to web development with HTML, CSS, and JavaScript for beginners.',
       duration: '3 months',
@@ -145,7 +158,7 @@ export default function Courses() {
       features: ['HTML5', 'CSS3', 'JavaScript Basics', 'Responsive Design', 'Portfolio Project', 'Certificate']
     },
     {
-      id: 12,
+      id: 13,
       title: 'Programming Fundamentals with Python (Diploma)',
       description: 'Learn programming basics with Python - perfect for diploma students entering tech field.',
       duration: '2.5 months',
@@ -154,7 +167,7 @@ export default function Courses() {
       features: ['Python Basics', 'Data Structures', 'Problem Solving', 'Mini Projects', 'Coding Practice', 'Certification']
     },
     {
-      id: 13,
+      id: 14,
       title: 'Digital Marketing Basics (High School/Diploma)',
       description: 'Learn social media marketing, SEO basics, and content creation for career in digital marketing.',
       duration: '2 months',
@@ -163,22 +176,13 @@ export default function Courses() {
       features: ['Social Media Marketing', 'SEO Basics', 'Content Creation', 'Email Marketing', 'Analytics', 'Live Projects']
     },
     {
-      id: 14,
+      id: 15,
       title: 'Graphic Design with Canva & Photoshop (Diploma)',
       description: 'Creative design course for diploma students covering modern design tools and principles.',
       duration: '2 months',
       price: '₹10,000',
       internshipPrice: '₹15,000',
       features: ['Canva Pro', 'Photoshop Basics', 'Logo Design', 'Social Media Graphics', 'Portfolio Building', 'Certificate']
-    },
-    {
-      id: 15,
-      title: 'Embedded Systems & IoT Development',
-      description: 'Master embedded systems programming with ARM Cortex, RTOS, IoT protocols, and real-world hardware projects.',
-      duration: '4 months',
-      price: '₹26,000',
-      internshipPrice: '₹33,000',
-      features: ['Embedded C/C++', 'ARM Cortex-M Programming', 'FreeRTOS', 'IoT Protocols (MQTT/HTTP)', 'Sensor Integration', 'PCB Design Basics', 'Industry Projects']
     }
   ]
 
