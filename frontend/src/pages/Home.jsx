@@ -351,7 +351,7 @@ function IndustryExpert(){
             <div className="w-full md:w-2/3 p-8">
               <div className="mb-4">
                 <h3 className="text-3xl font-bold text-gray-800">Aditya Nath</h3>
-                <p className="text-xl text-indigo-600 font-semibold mt-2">Senior SAP Industry Expert</p>
+                <p className="text-xl text-indigo-600 font-semibold mt-2">Brand Ambassador & SAP Industry Expert</p>
                 <div className="flex flex-wrap items-center gap-2 mt-3">
                   <span className="inline-block px-3 py-1 bg-indigo-100 text-indigo-700 rounded-full text-sm font-semibold">
                     SAP Certified Professional
@@ -367,15 +367,15 @@ function IndustryExpert(){
               
               <div className="space-y-4 text-gray-700 leading-relaxed">
                 <p className="text-lg">
-                  Our industry expert <strong>Aditya Nath</strong> brings over <strong>10 years of extensive work experience</strong> in SAP technologies including <strong>SAP ABAP, SAP Fiori, SAP UI5, SAP BTP (Business Technology Platform), SAP CPI (Cloud Platform Integration), and SAP BPA (Business Process Automation)</strong>.
+                  We are proud to have <strong>Aditya Nath</strong> as our <strong>Brand Ambassador</strong> and featured industry expert. With over <strong>10 years of extensive corporate experience</strong> in SAP technologies including <strong>SAP ABAP, SAP Fiori, SAP UI5, SAP BTP (Business Technology Platform), SAP CPI (Cloud Platform Integration), and SAP BPA (Business Process Automation)</strong>, he brings invaluable real-world insights to our training programs.
                 </p>
                 
                 <p className="text-lg">
-                  As a <strong>SAP Certified Professional</strong> and <strong>TEDx Speaker</strong>, Aditya has worked with the world's largest multinational companies including <strong>Capgemini, Wipro, Tech Mahindra</strong>, and many more organizations across various industries worldwide.
+                  As a <strong>SAP Certified Professional</strong> and <strong>TEDx Speaker</strong>, Aditya has successfully delivered enterprise solutions at the world's largest multinational companies including <strong>Capgemini, Wipro, Tech Mahindra</strong>, and numerous organizations across various industries worldwide.
                 </p>
                 
                 <p className="text-lg">
-                  Want to gain <strong>real-world industry knowledge</strong> and hands-on expertise from someone who has implemented enterprise solutions at global scale? Learn directly from Aditya and transform your SAP career with practical insights, proven methodologies, and industry best practices.
+                  Through his association with Infyron Technology, students gain access to <strong>real-world industry knowledge</strong> and hands-on expertise from a professional who has implemented enterprise solutions at global scale. Learn from his practical insights, proven methodologies, and industry best practices to accelerate your SAP career journey.
                 </p>
                 
                 <div className="mt-6 flex flex-wrap gap-3">
