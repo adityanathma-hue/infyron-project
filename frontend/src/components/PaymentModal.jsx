@@ -141,6 +141,7 @@ export default function PaymentModal({ isOpen, onClose, courses }) {
         name: 'Infyron Technologies',
         description: `${courseTitle} - ${courseType === 'internship' ? 'With Internship' : 'Training Only'}`,
         order_id: order.orderId,
+        config_id: 'config_RrPE0PuNDBGRYw', // Custom payment configuration
         prefill: {
           name: formData.name,
           email: formData.email,
