@@ -138,15 +138,6 @@ export default function PaymentModal({ isOpen, onClose, courses }) {
           type: courseType,
           student_name: formData.name
         },
-        theme: {
-          color: '#6366F1',
-          hide_topbar: false
-        },
-        modal: {
-          ondismiss: function() {
-            setIsProcessing(false)
-          }
-        },
         handler: async function (response) {
           // Payment successful
           try {
@@ -205,12 +196,15 @@ export default function PaymentModal({ isOpen, onClose, courses }) {
           contact: formData.phone
         },
         theme: {
-          color: '#6366F1'
+          color: '#6366F1',
+          hide_topbar: false
         },
         modal: {
           ondismiss: function() {
             setIsProcessing(false)
-          }
+          },
+          escape: true,
+          backdropclose: false
         }
       }
 
