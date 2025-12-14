@@ -50,8 +50,8 @@ export default function Courses() {
       title: 'SAP ABAP Development',
       description: 'Master SAP ABAP programming, data dictionary, ALV reports, and custom development.',
       duration: '3 months',
-      price: '₹45,000',
-      internshipPrice: '₹55,000',
+      price: '₹22,000',
+      internshipPrice: '₹30,000',
       features: ['Core ABAP', 'Data Dictionary', 'ALV Reports', 'BAPIs & RFCs', 'Smart Forms']
     },
     {
@@ -59,8 +59,8 @@ export default function Courses() {
       title: 'SAP Fiori/UI5 Development',
       description: 'Learn modern SAP UI development with Fiori apps, UI5 framework, and responsive design.',
       duration: '2.5 months',
-      price: '₹50,000',
-      internshipPrice: '₹60,000',
+      price: '₹25,000',
+      internshipPrice: '₹35,000',
       features: ['Fiori Elements', 'SAPUI5 Framework', 'OData Services', 'Custom Fiori Apps', 'Launchpad']
     },
     {
@@ -68,8 +68,8 @@ export default function Courses() {
       title: 'SAP Business Technology Platform (BTP)',
       description: 'Build cloud-native applications using SAP BTP, extension suite, and integration tools.',
       duration: '3 months',
-      price: '₹55,000',
-      internshipPrice: '₹65,000',
+      price: '₹28,000',
+      internshipPrice: '₹38,000',
       features: ['Cloud Foundry', 'Extension Suite', 'Integration Suite', 'BTP Services', 'Workflow']
     },
     {
@@ -77,8 +77,8 @@ export default function Courses() {
       title: 'SAP Cloud Platform Integration (CPI)',
       description: 'Master integration patterns, middleware concepts, and SAP CPI development.',
       duration: '2 months',
-      price: '₹40,000',
-      internshipPrice: '₹50,000',
+      price: '₹20,000',
+      internshipPrice: '₹28,000',
       features: ['Integration Flows', 'Adapters', 'Mapping', 'Security', 'Monitoring']
     },
     {
@@ -95,8 +95,8 @@ export default function Courses() {
       title: 'SAP Material Management (MM)',
       description: 'Learn SAP MM module for procurement, inventory management, and material master data.',
       duration: '2.5 months',
-      price: '₹40,000',
-      internshipPrice: '₹50,000',
+      price: '₹20,000',
+      internshipPrice: '₹28,000',
       features: ['Material Master', 'Procurement', 'Inventory Management', 'Vendor Management', 'Purchase Orders']
     },
     {
@@ -104,8 +104,8 @@ export default function Courses() {
       title: 'SAP Sales and Distribution (SD)',
       description: 'Master SAP SD module for sales processes, pricing, delivery, and billing.',
       duration: '3 months',
-      price: '₹42,000',
-      internshipPrice: '₹52,000',
+      price: '₹22,000',
+      internshipPrice: '₹30,000',
       features: ['Sales Orders', 'Pricing', 'Delivery Process', 'Billing', 'Customer Master', 'Credit Management']
     },
     {
@@ -113,8 +113,8 @@ export default function Courses() {
       title: 'SAP Environment, Health & Safety Management (EHSM)',
       description: 'Comprehensive training on SAP EHS for managing environmental compliance and safety.',
       duration: '2 months',
-      price: '₹38,000',
-      internshipPrice: '₹48,000',
+      price: '₹18,000',
+      internshipPrice: '₹26,000',
       features: ['Incident Management', 'Waste Management', 'Compliance', 'Risk Assessment', 'Safety Reports']
     },
     {
@@ -122,8 +122,8 @@ export default function Courses() {
       title: 'SAP Human Capital Management (HCM)',
       description: 'Learn SAP HCM/SuccessFactors for personnel management, payroll, and talent management.',
       duration: '3 months',
-      price: '₹45,000',
-      internshipPrice: '₹55,000',
+      price: '₹22,000',
+      internshipPrice: '₹30,000',
       features: ['Personnel Administration', 'Payroll', 'Time Management', 'Talent Management', 'Organizational Management']
     },
     {
