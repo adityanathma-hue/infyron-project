@@ -86,8 +86,8 @@ export default function Courses() {
       title: 'Full Stack Development (Java)',
       description: 'Complete enterprise Java development with Spring Boot, Hibernate, and Microservices.',
       duration: '4 months',
-      price: '₹60,000',
-      internshipPrice: '₹70,000',
+      price: '₹30,000',
+      internshipPrice: '₹40,000',
       features: ['Core Java', 'Spring Boot', 'Hibernate', 'Microservices', 'REST APIs', 'Deployment']
     },
     {
