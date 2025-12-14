@@ -367,15 +367,15 @@ function IndustryExpert(){
               
               <div className="space-y-4 text-gray-700 leading-relaxed">
                 <p className="text-lg">
-                  We are proud to have <strong>Aditya Nath</strong> as our <strong>Brand Ambassador</strong> and featured industry expert. With over <strong>10 years of extensive corporate experience</strong> in SAP technologies including <strong>SAP ABAP, SAP Fiori, SAP UI5, SAP BTP (Business Technology Platform), SAP CPI (Cloud Platform Integration), and SAP BPA (Business Process Automation)</strong>, he brings invaluable real-world insights to our training programs.
+                  <strong>Aditya Nath</strong>, our <strong>Brand Ambassador</strong>, is a distinguished SAP professional with over <strong>10 years of corporate experience</strong> in SAP technologies including <strong>SAP ABAP, SAP Fiori, SAP UI5, SAP BTP (Business Technology Platform), SAP CPI (Cloud Platform Integration), and SAP BPA (Business Process Automation)</strong>.
                 </p>
                 
                 <p className="text-lg">
-                  As a <strong>SAP Certified Professional</strong> and <strong>TEDx Speaker</strong>, Aditya has successfully delivered enterprise solutions at the world's largest multinational companies including <strong>Capgemini, Wipro, Tech Mahindra</strong>, and numerous organizations across various industries worldwide.
+                  As a <strong>SAP Certified Professional</strong> and <strong>TEDx Speaker</strong>, Aditya has delivered enterprise solutions at leading multinational companies including <strong>Capgemini, Wipro, Tech Mahindra</strong>, and various organizations across industries worldwide.
                 </p>
                 
                 <p className="text-lg">
-                  Through his association with Infyron Technology, students gain access to <strong>real-world industry knowledge</strong> and hands-on expertise from a professional who has implemented enterprise solutions at global scale. Learn from his practical insights, proven methodologies, and industry best practices to accelerate your SAP career journey.
+                  His endorsement of Infyron Technology reflects our commitment to industry-relevant training. Our curriculum is designed with <strong>real-world industry knowledge</strong> and practical insights that align with the standards of professionals who have implemented enterprise solutions at global scale.
                 </p>
                 
                 <div className="mt-6 flex flex-wrap gap-3">
