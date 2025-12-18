@@ -128,16 +128,6 @@ export default function Courses() {
       internshipPrice: '₹40,000',
       features: ['Core Java', 'Spring Boot', 'Hibernate', 'Microservices', 'REST APIs', 'Deployment']
     },
-    // Embedded Systems Course
-    {
-      id: 10,
-      title: 'Embedded Systems & IoT Development',
-      description: 'Master embedded systems programming with ARM Cortex, RTOS, IoT protocols, and real-world hardware projects.',
-      duration: '4 months',
-      price: '₹26,000',
-      internshipPrice: '₹33,000',
-      features: ['Embedded C/C++', 'ARM Cortex-M Programming', 'FreeRTOS', 'IoT Protocols (MQTT/HTTP)', 'Sensor Integration', 'PCB Design Basics', 'Industry Projects']
-    },
     // High School / Diploma Courses
     {
       id: 11,
@@ -198,8 +188,8 @@ export default function Courses() {
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 py-12 sm:px-6 lg:px-8">
-        {/* Pay Now Badge - Fixed Top Right Corner */}
-        <div className="fixed top-24 right-6 z-50">
+        {/* Pay Now Badge - Hidden */}
+        {false && <div className="fixed top-24 right-6 z-50">
           <div className="relative">
             <div className="absolute inset-0 bg-green-500 rounded-full blur-lg opacity-75 animate-pulse"></div>
             <button
@@ -212,7 +202,7 @@ export default function Courses() {
           <p className="text-center text-xs font-bold text-red-600 mt-2 animate-pulse">
             Don't Miss!
           </p>
-        </div>
+        </div>}
 
         {/* Header Section */}
         <div className="text-center mb-12">
