@@ -35,6 +35,13 @@ export default function LeadershipModal({ isOpen, onClose }) {
       details: 'Manages administrative operations, office coordination, and support functions. Ensures smooth day-to-day operations and efficient resource management across the organization. Handles logistics and operational workflows.'
     },
     {
+      id: 7,
+      name: 'Priyanka Sahoo',
+      role: 'Chief Human Resource Officer',
+      img: '/assets/priyanka.jpg',
+      details: 'Leads HR strategy with a strong focus on talent development, employee engagement, and organizational culture. Builds people-first programs that support training, retention, and long-term workforce success.'
+    },
+    {
       id: 8,
       name: 'Manoranjan Hansdah',
       role: 'Career Advisor',
