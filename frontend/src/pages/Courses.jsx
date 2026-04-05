@@ -188,8 +188,8 @@ export default function Courses() {
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 py-12 sm:px-6 lg:px-8">
-        {/* Pay Now Badge - Hidden */}
-        {false && <div className="fixed top-24 right-6 z-50">
+        {/* Pay Now Badge - Fixed Top Right Corner */}
+        <div className="fixed top-24 right-6 z-50">
           <div className="relative">
             <div className="absolute inset-0 bg-green-500 rounded-full blur-lg opacity-75 animate-pulse"></div>
             <button
@@ -202,7 +202,7 @@ export default function Courses() {
           <p className="text-center text-xs font-bold text-red-600 mt-2 animate-pulse">
             Don't Miss!
           </p>
-        </div>}
+        </div>
 
         {/* Header Section */}
         <div className="text-center mb-12">

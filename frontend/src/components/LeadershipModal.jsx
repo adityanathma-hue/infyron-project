@@ -35,13 +35,6 @@ export default function LeadershipModal({ isOpen, onClose }) {
       details: 'Manages administrative operations, office coordination, and support functions. Ensures smooth day-to-day operations and efficient resource management across the organization. Handles logistics and operational workflows.'
     },
     {
-      id: 7,
-      name: 'Gouranga Jena',
-      role: 'Sales Manager',
-      img: '/assets/raju.jpg',
-      details: 'Drives sales strategy and client acquisition. Manages customer relationships, business development, and market expansion. Expert in understanding client needs and delivering tailored technology solutions.'
-    },
-    {
       id: 8,
       name: 'Manoranjan Hansdah',
       role: 'Career Advisor',
