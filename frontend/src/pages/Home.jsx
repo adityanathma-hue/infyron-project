@@ -336,6 +336,7 @@ export default function Home() {
       <PromoBanner />
       <Hero />
       <Services />
+      <IndustryExpert />
       <WhyChoose />
       <About />
       <Technologies />
@@ -344,5 +345,93 @@ export default function Home() {
       <EMarketing />
       <Contact />
     </div>
+  )
+}
+
+function IndustryExpert() {
+  return (
+    <section id="expert" className="py-16 bg-gradient-to-r from-indigo-50 to-purple-50">
+      <div className="max-w-6xl mx-auto px-6">
+        <h2 className="text-3xl font-bold text-center text-gray-800 mb-8">Meet Our People Leader</h2>
+
+        <div className="bg-white rounded-xl shadow-xl overflow-hidden">
+          <div className="flex flex-col md:flex-row items-center">
+            <div className="w-full md:w-1/3 p-8">
+              <img
+                src="/assets/priyanka.jpg"
+                alt="Priyanka Sahoo - Chief Human Resource Officer"
+                className="w-64 h-64 rounded-full mx-auto object-cover shadow-2xl border-4 border-indigo-600"
+                loading="lazy"
+              />
+            </div>
+
+            <div className="w-full md:w-2/3 p-8">
+              <div className="mb-4">
+                <h3 className="text-3xl font-bold text-gray-800">Priyanka Sahoo</h3>
+                <p className="text-xl text-indigo-600 font-semibold mt-2">Chief Human Resource Officer</p>
+                <div className="flex flex-wrap items-center gap-2 mt-3">
+                  <span className="inline-block px-3 py-1 bg-indigo-100 text-indigo-700 rounded-full text-sm font-semibold">
+                    HR Leadership
+                  </span>
+                  <span className="inline-block px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-sm font-semibold">
+                    Talent Strategy
+                  </span>
+                  <span className="inline-block px-3 py-1 bg-red-100 text-red-700 rounded-full text-sm font-semibold">
+                    People Operations
+                  </span>
+                </div>
+              </div>
+
+              <div className="space-y-4 text-gray-700 leading-relaxed">
+                <p className="text-lg">
+                  Priyanka Sahoo is an accomplished human resources leader with expertise in talent management, employee engagement, and organizational development. She builds people-first HR programs that support training, career growth, and team performance.
+                </p>
+
+                <p className="text-lg">
+                  With extensive experience in workforce planning, learning and development, and culture-building, Priyanka helps create an environment where professionals can grow, feel supported, and deliver their best work.
+                </p>
+
+                <p className="text-lg">
+                  Her leadership focuses on aligning HR strategy with business goals, nurturing talent pipelines, and fostering a strong employee experience that drives lasting success for the organization.
+                </p>
+
+                <div className="mt-6 flex flex-wrap gap-3">
+                  <div className="flex items-center gap-2 text-gray-600">
+                    <span className="text-indigo-600">✓</span>
+                    <span>Talent Management</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-gray-600">
+                    <span className="text-indigo-600">✓</span>
+                    <span>Employee Engagement</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-gray-600">
+                    <span className="text-indigo-600">✓</span>
+                    <span>Learning & Development</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-gray-600">
+                    <span className="text-indigo-600">✓</span>
+                    <span>Organizational Culture</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-gray-600">
+                    <span className="text-indigo-600">✓</span>
+                    <span>HR Operations</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-gray-600">
+                    <span className="text-indigo-600">✓</span>
+                    <span>Career Guidance</span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="mt-8">
+                <a href="#contact" className="btn-primary inline-block">
+                  Connect with Our HR Team
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   )
 }
