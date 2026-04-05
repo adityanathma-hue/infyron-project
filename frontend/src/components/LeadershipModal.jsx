@@ -36,7 +36,7 @@ export default function LeadershipModal({ isOpen, onClose }) {
     },
     {
       id: 7,
-      name: 'Priyanka Sahoo',
+      name: 'Priyanka Sahu',
       role: 'Chief Human Resource Officer',
       img: '/assets/priyanka.jpg',
       details: 'Leads HR strategy with a strong focus on talent development, employee engagement, and organizational culture. Builds people-first programs that support training, retention, and long-term workforce success.'

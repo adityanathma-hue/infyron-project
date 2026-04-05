@@ -359,7 +359,7 @@ function IndustryExpert() {
             <div className="w-full md:w-1/3 p-8">
               <img
                 src="/assets/priyanka.jpg"
-                alt="Priyanka Sahoo - Chief Human Resource Officer"
+                alt="Priyanka Sahu - Chief Human Resource Officer"
                 className="w-64 h-64 rounded-full mx-auto object-cover shadow-2xl border-4 border-indigo-600"
                 loading="lazy"
               />
@@ -367,7 +367,7 @@ function IndustryExpert() {
 
             <div className="w-full md:w-2/3 p-8">
               <div className="mb-4">
-                <h3 className="text-3xl font-bold text-gray-800">Priyanka Sahoo</h3>
+                <h3 className="text-3xl font-bold text-gray-800">Priyanka Sahu</h3>
                 <p className="text-xl text-indigo-600 font-semibold mt-2">Chief Human Resource Officer</p>
                 <div className="flex flex-wrap items-center gap-2 mt-3">
                   <span className="inline-block px-3 py-1 bg-indigo-100 text-indigo-700 rounded-full text-sm font-semibold">
@@ -384,7 +384,7 @@ function IndustryExpert() {
 
               <div className="space-y-4 text-gray-700 leading-relaxed">
                 <p className="text-lg">
-                  Priyanka Sahoo is an accomplished human resources leader with expertise in talent management, employee engagement, and organizational development. She builds people-first HR programs that support training, career growth, and team performance.
+                  Priyanka Sahu is an accomplished human resources leader with expertise in talent management, employee engagement, and organizational development. She builds people-first HR programs that support training, career growth, and team performance.
                 </p>
 
                 <p className="text-lg">
