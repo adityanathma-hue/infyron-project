@@ -329,100 +329,6 @@ function Contact(){
   )
 }
 
-function IndustryExpert(){
-  return (
-    <section id="expert" className="py-16 bg-gradient-to-r from-indigo-50 to-purple-50">
-      <div className="max-w-6xl mx-auto px-6">
-        <h2 className="text-3xl font-bold text-center text-gray-800 mb-8">Learn from Industry Expert</h2>
-        
-        <div className="bg-white rounded-xl shadow-xl overflow-hidden">
-          <div className="flex flex-col md:flex-row items-center">
-            {/* Image Section */}
-            <div className="w-full md:w-1/3 p-8">
-              <img 
-                src="/assets/aditya.jpg" 
-                alt="Aditya Nath - SAP Industry Expert"
-                className="w-64 h-64 rounded-full mx-auto object-cover shadow-2xl border-4 border-indigo-600"
-                loading="lazy"
-              />
-            </div>
-            
-            {/* Content Section */}
-            <div className="w-full md:w-2/3 p-8">
-              <div className="mb-4">
-                <h3 className="text-3xl font-bold text-gray-800">Aditya Nath</h3>
-                <p className="text-xl text-indigo-600 font-semibold mt-2">Senior SAP Industry Expert</p>
-                <div className="flex flex-wrap items-center gap-2 mt-3">
-                  <span className="inline-block px-3 py-1 bg-indigo-100 text-indigo-700 rounded-full text-sm font-semibold">
-                    SAP Certified Professional
-                  </span>
-                  <span className="inline-block px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-sm font-semibold">
-                    10+ Years Experience
-                  </span>
-                  <span className="inline-block px-3 py-1 bg-red-100 text-red-700 rounded-full text-sm font-semibold">
-                    TEDx Speaker
-                  </span>
-                </div>
-              </div>
-              
-              <div className="space-y-4 text-gray-700 leading-relaxed">
-                <p className="text-lg">
-                  <strong>Aditya Nath</strong> is a distinguished SAP professional with over <strong>10 years of corporate experience</strong> in SAP technologies including <strong>SAP ABAP, SAP Fiori, SAP UI5, SAP BTP (Business Technology Platform), SAP CPI (Cloud Platform Integration), and SAP BPA (Business Process Automation)</strong>.
-                </p>
-                
-                <p className="text-lg">
-                  As a <strong>SAP Certified Professional</strong> and <strong>TEDx Speaker</strong>, he has successfully delivered enterprise solutions at leading multinational companies including <strong>Capgemini, Wipro, Tech Mahindra</strong>, and various organizations across industries worldwide.
-                </p>
-                
-                <p className="text-lg">
-                  With expertise spanning multiple SAP modules and cutting-edge technologies, professionals like Aditya represent the industry standards we aspire to maintain in our training programs. Our curriculum is designed to equip students with <strong>real-world industry knowledge</strong> and practical insights for successful SAP careers.
-                </p>
-                
-                <div className="mt-6 flex flex-wrap gap-3">
-                  <div className="flex items-center gap-2 text-gray-600">
-                    <span className="text-indigo-600">✓</span>
-                    <span>SAP ABAP</span>
-                  </div>
-                  <div className="flex items-center gap-2 text-gray-600">
-                    <span className="text-indigo-600">✓</span>
-                    <span>SAP Fiori</span>
-                  </div>
-                  <div className="flex items-center gap-2 text-gray-600">
-                    <span className="text-indigo-600">✓</span>
-                    <span>SAP UI5</span>
-                  </div>
-                  <div className="flex items-center gap-2 text-gray-600">
-                    <span className="text-indigo-600">✓</span>
-                    <span>SAP BTP</span>
-                  </div>
-                  <div className="flex items-center gap-2 text-gray-600">
-                    <span className="text-indigo-600">✓</span>
-                    <span>SAP CPI</span>
-                  </div>
-                  <div className="flex items-center gap-2 text-gray-600">
-                    <span className="text-indigo-600">✓</span>
-                    <span>SAP BPA</span>
-                  </div>
-                  <div className="flex items-center gap-2 text-gray-600">
-                    <span className="text-indigo-600">✓</span>
-                    <span>Enterprise Solutions</span>
-                  </div>
-                </div>
-              </div>
-              
-              <div className="mt-8">
-                <a href="#contact" className="btn-primary inline-block">
-                  Get in Touch for Training
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  )
-}
-
 export default function Home() {
   return (
     <div>
@@ -430,7 +336,6 @@ export default function Home() {
       <PromoBanner />
       <Hero />
       <Services />
-      <IndustryExpert />
       <WhyChoose />
       <About />
       <Technologies />
